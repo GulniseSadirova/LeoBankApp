@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/emailAddFragment">
+
+    <fragment
+        android:id="@+id/emailAddFragment"
+        android:name="com.leobank.EmailAddFragment"
+        android:label="fragment_email_add"
+        tools:layout="@layout/fragment_email_add" >
+        <action
+            android:id="@+id/action_emailAddFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.leobank.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_creditsFragment"
+            app:destination="@id/creditsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/creditsFragment"
+        android:name="com.leobank.CreditsFragment"
+        android:label="fragment_credits"
+        tools:layout="@layout/fragment_credits" >
+        <action
+            android:id="@+id/action_creditsFragment_to_capitalsFragment"
+            app:destination="@id/capitalsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/capitalsFragment"
+        android:name="com.leobank.CapitalsFragment"
+        android:label="fragment_capitals"
+        tools:layout="@layout/fragment_capitals" >
+        <action
+            android:id="@+id/action_capitalsFragment_to_edvFragment"
+            app:destination="@id/edvFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/edvFragment"
+        android:name="com.leobank.EdvFragment"
+        android:label="fragment_edv"
+        tools:layout="@layout/fragment_edv" >
+        <action
+            android:id="@+id/action_edvFragment_to_othersFragment"
+            app:destination="@id/othersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/othersFragment"
+        android:name="com.leobank.OthersFragment"
+        android:label="fragment_others"
+        tools:layout="@layout/fragment_others" />
+</navigation>
