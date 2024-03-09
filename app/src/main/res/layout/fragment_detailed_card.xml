@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".DetailedCardFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/myLeoCardDetail"
+        android:layout_width="380dp"
+        android:layout_height="240dp"
+        android:backgroundTint="@color/black"
+        app:cardCornerRadius="35dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.029"
+        tools:ignore="MissingConstraints">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="#2B2B2B"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.144" />
+
+            <TextView
+                android:id="@+id/txtCardNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4098 4545 6756 9871"
+                android:textColor="@color/white"
+                android:textSize="27dp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.155"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="09/27"
+                android:textStyle="italic"
+                android:textColor="@color/white"
+                android:textSize="19dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.832" />
+
+            <TextView
+                android:id="@+id/txtCvv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:text="380"
+                android:textColor="@color/white"
+                android:textSize="19dp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/txtDate"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.831" />
+
+            <TextView
+                android:id="@+id/textViewDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TARIX"
+                app:layout_constraintEnd_toEndOf="@+id/txtDate"
+                app:layout_constraintStart_toStartOf="@+id/txtDate"
+                app:layout_constraintTop_toBottomOf="@+id/txtDate" />
+
+            <TextView
+                android:id="@+id/textViewCvv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CVV"
+                app:layout_constraintEnd_toEndOf="@+id/txtCvv"
+                app:layout_constraintStart_toStartOf="@+id/txtCvv"
+                app:layout_constraintTop_toBottomOf="@+id/txtCvv" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imageBlock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:src="@drawable/baseline_block_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myLeoCardDetail"
+        app:layout_constraintVertical_bias="0.047" />
+
+    <ImageView
+        android:id="@+id/imageMobile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/baseline_phonelink_ring_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageBlock"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageDesign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/baseline_palette_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageMobile" />
+
+    <ImageView
+        android:id="@+id/imageOnline"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/world"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageDesign" />
+
+    <ImageView
+        android:id="@+id/imagePin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/three_dots_svgrepo_com"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageOnline" />
+
+    <ImageView
+        android:id="@+id/imageSecurity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/baseline_security_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagePin"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageAbune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/bell_alt_svgrepo_com"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageSecurity" />
+
+    <ImageView
+        android:id="@+id/imageLimit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/database_svgrepo_com"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageAbune" />
+
+    <ImageView
+        android:id="@+id/imageCixaris"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/receipt_svg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageLimit" />
+
+    <ImageView
+        android:id="@+id/imageHesab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/baseline_request_page_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageCixaris" />
+
+    <TextView
+        android:id="@+id/textBlock1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="Plastik kartı blokla"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imageBlock"
+        app:layout_constraintStart_toEndOf="@+id/imageBlock"
+        app:layout_constraintTop_toTopOf="@+id/imageBlock"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textBlock2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="İstənilən vaxt onu blokdan çıxara bilərsiniz"
+        android:textSize="11dp"
+        app:layout_constraintEnd_toEndOf="@+id/textBlock1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textBlock1"
+        app:layout_constraintTop_toBottomOf="@+id/textBlock1"
+        tools:ignore="MissingConstraints,NotSibling" />
+
+    <TextView
+        android:id="@+id/textPay1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="Apple Pay quraşdırmaq"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imageMobile"
+        app:layout_constraintStart_toEndOf="@+id/imageMobile"
+        app:layout_constraintTop_toTopOf="@+id/imageMobile"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textPay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Kart əlavə edildi"
+        android:textSize="11dp"
+        app:layout_constraintEnd_toEndOf="@+id/textPay1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textPay1"
+        app:layout_constraintTop_toBottomOf="@+id/textPay1" />
+
+    <TextView
+        android:id="@+id/textDesign1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="Apple Pay üçün kart dizaynı"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imageDesign"
+        app:layout_constraintStart_toEndOf="@+id/imageDesign"
+        app:layout_constraintTop_toTopOf="@+id/imageDesign"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textOnline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="Onlayn ödənişlərin aylıq limiti"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imageOnline"
+        app:layout_constraintStart_toEndOf="@+id/imageOnline"
+        app:layout_constraintTop_toTopOf="@+id/imageOnline"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textOnline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="9986.58/10000 qalıb"
+        android:textSize="11dp"
+        app:layout_constraintEnd_toEndOf="@+id/textOnline1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textOnline1"
+        app:layout_constraintTop_toBottomOf="@+id/textOnline1" />
+
+    <TextView
+        android:id="@+id/textPin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="Pin kodu dəyişmək"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imagePin"
+        app:layout_constraintStart_toEndOf="@+id/imagePin"
+        app:layout_constraintTop_toTopOf="@+id/imagePin"
+        app:layout_constraintVertical_bias="0.076" />
+
+    <TextView
+        android:id="@+id/textPin2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="kart və tətbiqlər"
+        android:textSize="11dp"
+        app:layout_constraintEnd_toEndOf="@+id/textPin"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textPin"
+        app:layout_constraintTop_toBottomOf="@+id/textPin" />
+
+    <TextView
+        android:id="@+id/textSecurity1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="Təhlükəsizlik ayarları"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imageSecurity"
+        app:layout_constraintStart_toEndOf="@+id/imageSecurity"
+        app:layout_constraintTop_toTopOf="@+id/imageSecurity"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textSecurity2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bankomat,təmassız,maqnit zolağı"
+        android:textSize="11dp"
+        app:layout_constraintEnd_toEndOf="@+id/textSecurity1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textSecurity1"
+        app:layout_constraintTop_toBottomOf="@+id/textSecurity1" />
+
+    <TextView
+        android:id="@+id/textAbune1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="Abunə idarəetməsi"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imageAbune"
+        app:layout_constraintStart_toEndOf="@+id/imageAbune"
+        app:layout_constraintTop_toTopOf="@+id/imageAbune"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textAbune2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kartınızla bağlı olan servislər"
+        android:textSize="11dp"
+        app:layout_constraintEnd_toEndOf="@+id/textAbune1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textAbune1"
+        app:layout_constraintTop_toBottomOf="@+id/textAbune1" />
+
+    <TextView
+        android:id="@+id/textLimit1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="Kredit limitini artırmaq"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imageLimit"
+        app:layout_constraintStart_toEndOf="@+id/imageLimit"
+        app:layout_constraintTop_toTopOf="@+id/imageLimit"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textLimit2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cari limit: 0 m"
+        android:textSize="11dp"
+        app:layout_constraintEnd_toEndOf="@+id/textLimit1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textLimit1"
+        app:layout_constraintTop_toBottomOf="@+id/textLimit1" />
+
+    <TextView
+        android:id="@+id/textCixaris"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="Kart üzrə çıxarış"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imageCixaris"
+        app:layout_constraintStart_toEndOf="@+id/imageCixaris"
+        app:layout_constraintTop_toTopOf="@+id/imageCixaris"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textHesab1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="Hesab rekvizitləri"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imageHesab"
+        app:layout_constraintStart_toEndOf="@+id/imageHesab"
+        app:layout_constraintTop_toTopOf="@+id/imageHesab"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textHesab2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SWİFT və ölkədaxili"
+        android:textSize="11dp"
+        app:layout_constraintEnd_toEndOf="@+id/textHesab1"
+        app:layout_constraintStart_toStartOf="@+id/textHesab1"
+        app:layout_constraintTop_toBottomOf="@+id/textHesab1" />
+
+    <ImageView
+        android:id="@+id/imageBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_keyboard_arrow_down_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.985" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
