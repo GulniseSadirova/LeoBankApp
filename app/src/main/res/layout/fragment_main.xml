@@ -1,14 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_esas"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/txtMebleg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="280.45 m"
+        android:textSize="33dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.09" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/imageArtirilma"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/baseline_circle_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtMebleg" />
+
+    <ImageView
+        android:id="@+id/imageKocurme"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/baseline_circle_24"
+        app:layout_constraintStart_toEndOf="@+id/imageArtirilma"
+        app:layout_constraintTop_toBottomOf="@+id/txtMebleg" />
+
+    <ImageView
+        android:id="@+id/imageDiger"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/baseline_circle_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageKocurme"
+        app:layout_constraintTop_toBottomOf="@+id/txtMebleg" />
+
+    <ImageView
+        android:id="@+id/imageForward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_arrow_forward_24"
+        app:layout_constraintBottom_toBottomOf="@+id/imageKocurme"
+        app:layout_constraintEnd_toEndOf="@+id/imageKocurme"
+        app:layout_constraintStart_toStartOf="@+id/imageKocurme"
+        app:layout_constraintTop_toTopOf="@+id/imageKocurme" />
+
+    <ImageView
+        android:id="@+id/imageWallet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_account_balance_wallet_24"
+        app:layout_constraintBottom_toBottomOf="@+id/imageDiger"
+        app:layout_constraintEnd_toEndOf="@+id/imageDiger"
+        app:layout_constraintStart_toStartOf="@+id/imageDiger"
+        app:layout_constraintTop_toTopOf="@+id/imageDiger" />
+
+    <ImageView
+        android:id="@+id/imageAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_add_24"
+        app:layout_constraintBottom_toBottomOf="@+id/imageArtirilma"
+        app:layout_constraintEnd_toEndOf="@+id/imageArtirilma"
+        app:layout_constraintStart_toStartOf="@+id/imageArtirilma"
+        app:layout_constraintTop_toTopOf="@+id/imageArtirilma" />
+
+    <TextView
+        android:id="@+id/txtDiger1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Digər"
+        app:layout_constraintEnd_toEndOf="@+id/imageDiger"
+        app:layout_constraintStart_toStartOf="@+id/imageDiger"
+        app:layout_constraintTop_toBottomOf="@+id/imageDiger" />
+
+    <TextView
+        android:id="@+id/textDiger2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ödənişlər"
+        app:layout_constraintEnd_toEndOf="@+id/txtDiger1"
+        app:layout_constraintStart_toStartOf="@+id/txtDiger1"
+        app:layout_constraintTop_toBottomOf="@+id/txtDiger1" />
+
+    <TextView
+        android:id="@+id/txtKocurme1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Karta"
+        app:layout_constraintEnd_toEndOf="@+id/imageKocurme"
+        app:layout_constraintStart_toStartOf="@+id/imageKocurme"
+        app:layout_constraintTop_toBottomOf="@+id/imageKocurme" />
+
+    <TextView
+        android:id="@+id/txtKocurme2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="köçürmə"
+        app:layout_constraintEnd_toEndOf="@+id/txtKocurme1"
+        app:layout_constraintStart_toStartOf="@+id/txtKocurme1"
+        app:layout_constraintTop_toBottomOf="@+id/txtKocurme1" />
+
+    <TextView
+        android:id="@+id/txtBalans1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Balansın"
+        app:layout_constraintEnd_toEndOf="@+id/imageArtirilma"
+        app:layout_constraintStart_toStartOf="@+id/imageArtirilma"
+        app:layout_constraintTop_toBottomOf="@+id/imageArtirilma" />
+
+    <TextView
+        android:id="@+id/txtBalans2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="artırılması"
+        app:layout_constraintEnd_toEndOf="@+id/txtBalans1"
+        app:layout_constraintStart_toStartOf="@+id/txtBalans1"
+        app:layout_constraintTop_toBottomOf="@+id/txtBalans1" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/myLeoCard"
+        android:layout_width="300dp"
+        android:layout_height="190dp"
+        app:cardCornerRadius="35dp"
+        android:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.56"
+        tools:ignore="MissingConstraints" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="97dp"
+                android:layout_height="38dp"
+                android:src="@drawable/img_1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.921"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.032" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginBottom="-30dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.987" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

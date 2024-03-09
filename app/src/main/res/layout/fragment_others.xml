@@ -1,14 +1,298 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".OthersFragment">
+    <ImageView
+        android:id="@+id/imagePresent"
+        android:layout_width="75dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/cashback"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/imageTreasure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/whatsapp_image_2024_01_15_at_1_31_44_am"
+        app:layout_constraintStart_toEndOf="@+id/imagePresent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/whatsapp_image_2024_01_15_at_1_33_56_am"
+        app:layout_constraintStart_toEndOf="@+id/imageTreasure"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageStatistic"
+        android:layout_width="wrap_content"
+        android:layout_height="85dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/whatsapp_image_2024_01_15_at_1_37_49_am"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.71"
+        app:layout_constraintStart_toEndOf="@+id/imageMessage"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/txtCashBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
-</FrameLayout>
+        android:layout_marginStart="16dp"
+        android:text="Cashback"
+
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagePresent" />
+
+    <TextView
+        android:id="@+id/txtXezine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="1dp"
+        android:text="Xəzinə"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/txtCashBack"
+        app:layout_constraintTop_toBottomOf="@+id/imageTreasure" />
+
+    <TextView
+        android:id="@+id/txtDevet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="Dəvət etmək"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/txtXezine"
+        app:layout_constraintTop_toBottomOf="@+id/imageMessage" />
+
+    <TextView
+        android:id="@+id/textXerc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:text="Xərcləmə"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/txtDevet"
+        app:layout_constraintTop_toBottomOf="@+id/imageStatistic"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="statistikasi"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textXerc"
+        app:layout_constraintTop_toBottomOf="@+id/imageStatistic" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:text="0.21 m"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtCashBack" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="19dp"
+        android:text="0 m"
+        app:layout_constraintStart_toStartOf="@+id/txtXezine"
+        app:layout_constraintTop_toTopOf="@+id/txtXezine" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hərəyə 3m"
+        app:layout_constraintStart_toStartOf="@+id/txtDevet"
+        app:layout_constraintTop_toBottomOf="@+id/txtDevet" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Profil və ayarlar"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/imageP"
+        app:layout_constraintStart_toEndOf="@+id/imageP"
+        app:layout_constraintTop_toTopOf="@id/imageP"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valyuta məzənnəsi"
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@id/imageG"
+        app:layout_constraintTop_toTopOf="@+id/imageG"
+        app:layout_constraintBottom_toBottomOf="@id/imageG"/>
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tez-tez verilən suallar"
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@id/imageQ"
+        app:layout_constraintTop_toTopOf="@+id/imageQ"
+        app:layout_constraintBottom_toBottomOf="@id/imageQ" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tariflər"
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@id/imageR"
+        app:layout_constraintTop_toTopOf="@+id/imageR"
+        app:layout_constraintBottom_toBottomOf="@id/imageR" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dəstək 24/7"
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@id/imageM"
+        app:layout_constraintTop_toTopOf="@+id/imageM"
+        app:layout_constraintBottom_toBottomOf="@id/imageM" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Leobank İnstagramda"
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@id/imageI"
+        app:layout_constraintTop_toTopOf="@+id/imageI"
+        app:layout_constraintBottom_toBottomOf="@id/imageI" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Nağd pulla"
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@id/imageL"
+        app:layout_constraintTop_toTopOf="@+id/imageL"
+        app:layout_constraintBottom_toBottomOf="@id/imageL" />
+
+    <ImageView
+        android:id="@+id/imageG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/global_svgrepo_com__1_"
+        app:layout_constraintStart_toStartOf="@id/imageP"
+        app:layout_constraintTop_toBottomOf="@+id/imageP"
+        />
+
+    <ImageView
+        android:id="@+id/imageP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:src="@drawable/baseline_account_circle_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <ImageView
+        android:id="@+id/imageQ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/question_mark_button_svgrepo_com"
+        app:layout_constraintStart_toStartOf="@id/imageG"
+        app:layout_constraintTop_toBottomOf="@+id/imageG"
+        />
+
+    <ImageView
+        android:id="@+id/imageR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/baseline_receipt_24"
+        app:layout_constraintStart_toStartOf="@id/imageQ"
+        app:layout_constraintTop_toBottomOf="@+id/imageQ" />
+
+    <ImageView
+        android:id="@+id/imageM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/baseline_chat_24"
+        app:layout_constraintStart_toStartOf="@id/imageR"
+        app:layout_constraintTop_toBottomOf="@+id/imageR"/>
+
+    <ImageView
+        android:id="@+id/imageI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/instagram_svgrepo_com"
+        app:layout_constraintStart_toStartOf="@id/imageM"
+        app:layout_constraintTop_toBottomOf="@+id/imageM" />
+
+    <ImageView
+        android:id="@+id/imageL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/baseline_location_on_24"
+        app:layout_constraintStart_toStartOf="@id/imageI"
+        app:layout_constraintTop_toBottomOf="@+id/imageI" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="#8E8989"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.23" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,14 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_edv"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".EdvFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ImageView
+        android:id="@+id/InfoImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_info_outline_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.958"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/txtEdv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="1.32m"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtGozlemede"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gözləmədə 3.84 m"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtEdv"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageQrCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/baseline_circle_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtGozlemede"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageMoneyCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="112dp"
+        android:src="@drawable/baseline_circle_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/imageQrCircle"
+        app:layout_constraintTop_toBottomOf="@+id/txtGozlemede"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageqR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_qr_code_24"
+        app:layout_constraintBottom_toBottomOf="@+id/imageQrCircle"
+        app:layout_constraintEnd_toEndOf="@+id/imageQrCircle"
+        app:layout_constraintStart_toStartOf="@+id/imageQrCircle"
+        app:layout_constraintTop_toTopOf="@+id/imageQrCircle" />
+
+    <ImageView
+        android:id="@+id/imageGetMoney"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:src="@drawable/baseline_arrow_downward_24"
+        app:layout_constraintBottom_toBottomOf="@+id/imageMoneyCircle"
+        app:layout_constraintEnd_toEndOf="@+id/imageMoneyCircle"
+        app:layout_constraintStart_toStartOf="@+id/imageMoneyCircle"
+        app:layout_constraintTop_toTopOf="@+id/imageMoneyCircle" />
+
+    <TextView
+        android:id="@+id/textQebz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Qəbz əlavə etmək"
+        app:layout_constraintEnd_toEndOf="@+id/imageQrCircle"
+        app:layout_constraintStart_toStartOf="@+id/imageQrCircle"
+        app:layout_constraintTop_toBottomOf="@+id/imageqR" />
+
+    <TextView
+        android:id="@+id/textPul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pulları çıxarmaq"
+        app:layout_constraintEnd_toEndOf="@+id/imageMoneyCircle"
+        app:layout_constraintStart_toStartOf="@+id/imageMoneyCircle"
+        app:layout_constraintTop_toBottomOf="@+id/imageMoneyCircle" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/myCardView"
+        android:layout_width="match_parent"
+        android:layout_height="517dp"
+        android:layout_marginBottom="-30dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:text="Hamısı"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.03" />
+
+            <TextView
+                android:id="@+id/txt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Gözləmədədir"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txt1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.03" />
+
+            <TextView
+                android:id="@+id/txt3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:text="Qaytarılıb"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txt2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.03" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ləğv edilib"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintStart_toEndOf="@+id/txt3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.03" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

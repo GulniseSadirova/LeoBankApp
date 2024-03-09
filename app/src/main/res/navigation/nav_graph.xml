@@ -22,6 +22,18 @@
         <action
             android:id="@+id/action_mainFragment_to_creditsFragment"
             app:destination="@id/creditsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_detailedCardFragment"
+            app:destination="@id/detailedCardFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_balanceIncreaseFragment"
+            app:destination="@id/balanceIncreaseFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_sendToCardFragment"
+            app:destination="@id/sendToCardFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
     </fragment>
     <fragment
         android:id="@+id/creditsFragment"
@@ -55,4 +67,40 @@
         android:name="com.leobank.OthersFragment"
         android:label="fragment_others"
         tools:layout="@layout/fragment_others" />
+    <fragment
+        android:id="@+id/detailedCardFragment"
+        android:name="com.leobank.DetailedCardFragment"
+        android:label="fragment_detailed_card"
+        tools:layout="@layout/fragment_detailed_card" >
+        <action
+            android:id="@+id/action_detailedCardFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/balanceIncreaseFragment"
+        android:name="com.leobank.BalanceIncreaseFragment"
+        android:label="fragment_balance_increase"
+        tools:layout="@layout/fragment_balance_increase" >
+        <action
+            android:id="@+id/action_balanceIncreaseFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sendToCardFragment"
+        android:name="com.leobank.SendToCardFragment"
+        android:label="fragment_send_to_card"
+        tools:layout="@layout/fragment_send_to_card" >
+        <action
+            android:id="@+id/action_sendToCardFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.leobank.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" >
+        <action
+            android:id="@+id/action_paymentFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 </navigation>
