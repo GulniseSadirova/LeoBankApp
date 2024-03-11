@@ -11,7 +11,7 @@
         android:id="@+id/txtMebleg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="280.45 m"
+        android:text="280.45 "
         android:textSize="33dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

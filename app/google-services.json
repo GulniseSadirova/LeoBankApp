@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "104830058857",
-    "project_id": "leobankapp",
-    "storage_bucket": "leobankapp.appspot.com"
+    "project_number": "1044436846508",
+    "project_id": "leobank-6c4b5",
+    "storage_bucket": "leobank-6c4b5.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:104830058857:android:fbbbeeadcacd704f383df8",
+        "mobilesdk_app_id": "1:1044436846508:android:b3e1fbb7e196bfaeb5dc09",
         "android_client_info": {
           "package_name": "com.leobank"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAPw5XGJRBQUWQOypUG_I0msk0tNHFaYzk"
+          "current_key": "AIzaSyBnKvMCCRy9_iumz-LxaiT7ZZuB6tA2nAk"
         }
       ],
       "services": {
