@@ -8,16 +8,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.firestore
 import com.leobank.databinding.FragmentMainBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class MainFragment : Fragment() {
   private lateinit var binding: FragmentMainBinding
+  private lateinit var adapter: Adapter
+    private lateinit var viewModel: MainFragmentViewModel
+    private var productList: ArrayList<Spending> = ArrayList()
 
 
 
@@ -27,12 +38,33 @@ class MainFragment : Fragment() {
     ): View? {
         binding=FragmentMainBinding.inflate(inflater,container,false)
         click()
-        balanceIncrease()
-        sendCard()
-        increaseAmountManually(0.0)
-        payment()
+
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel=ViewModelProvider(this).get(MainFragmentViewModel::class.java)
+        setAdapter()
+        observeProducts()
+        lifecycleScope.launch(Dispatchers.Main) {
+            viewModel.getAllProducts(requireContext())
+        }
+        lifecycleScope.launch(Dispatchers.Main) {
+            viewModel.addToTotalAmount(130.0)
+        }
+        balanceIncrease()
+        sendCard()
+        payment()
+        val transferViewModel: TransferViewModel by activityViewModels()
+        transferViewModel.transferAmount.observe(viewLifecycleOwner) { amount ->
+            viewModel.addToTotalAmount(amount)
+        }
+        viewModel.totalAmount.observe(viewLifecycleOwner) { total ->
+            binding.txtMebleg.text = "$total"
+        }
+
     }
     private fun click(){
         binding.myLeoCard.setOnClickListener {
@@ -54,52 +86,22 @@ class MainFragment : Fragment() {
             findNavController().navigate(R.id.action_mainFragment_to_paymentFragment)
         }
     }
-    private fun updateFirebase(amount: Double) {
-        val db = Firebase.firestore
-        val userUid = Firebase.auth.currentUser?.uid
-        if (userUid != null) {
-            db.collection("amount")
-                .document(userUid)
-                .get()
-                .addOnSuccessListener { document ->
-                    if (document != null) {
-                        val currentBalance = document.getDouble("amount") ?: 0.0
-                        val newBalance = currentBalance + amount
-                        val accountData = hashMapOf(
-                            "amount" to newBalance
-                        )
-                        db.collection("amount")
-                            .document(userUid)
-                            .set(accountData, SetOptions.merge())
-                            .addOnSuccessListener {
-                                Log.d(TAG, "Balance updated successfully!")
-                            }
-                            .addOnFailureListener { e ->
-                                Log.w(TAG, "Error updating balance", e)
-                            }
-                    } else {
-                        Log.d(TAG, "No such document")
-                    }
-                }
-                .addOnFailureListener { exception ->
 
-                    Log.w(TAG, "Error getting documents: ", exception)
-                }
-        }
-    }
-    private fun increaseAmountManually(amount: Double) {
-        val currentAmountStr = binding.txtMebleg.text.toString()
-        val currentAmount = if (currentAmountStr.isNotEmpty()) {
-            currentAmountStr.toDouble()
-        } else {
-            0.0
-        }
-        val newAmount = currentAmount + amount
-        binding.txtMebleg.text = newAmount.toString()
-        updateFirebase(amount)
-        Log.d(TAG, "Firebase Balance Updated: $newAmount")
+    private fun setAdapter() {
+            adapter = Adapter()
+        binding.recylerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recylerView.adapter = adapter
 
     }
+    private fun observeProducts() {
+        viewModel.productList.observe(viewLifecycleOwner) { productList ->
+            adapter.submitList(productList)
+            this.productList.clear()
+            this.productList.addAll(productList)
+        }
+    }
+
+
 
 
 

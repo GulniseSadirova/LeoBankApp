@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_mainFragment_to_paymentFragment"
             app:destination="@id/paymentFragment" />
+        <argument
+            android:name="mebleg"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/creditsFragment"
@@ -84,6 +87,9 @@
         <action
             android:id="@+id/action_balanceIncreaseFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_balanceIncreaseFragment_to_anotherCardIncreaseFragment"
+            app:destination="@id/anotherCardIncreaseFragment" />
     </fragment>
     <fragment
         android:id="@+id/sendToCardFragment"
@@ -103,4 +109,29 @@
             android:id="@+id/action_paymentFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/anotherCardIncreaseFragment"
+        android:name="com.leobank.AnotherCardIncreaseFragment"
+        android:label="fragment_another_card_increase"
+        tools:layout="@layout/fragment_another_card_increase" >
+        <action
+            android:id="@+id/action_anotherCardIncreaseFragment_to_balanceIncreaseFragment"
+            app:destination="@id/balanceIncreaseFragment" />
+        <action
+            android:id="@+id/action_anotherCardIncreaseFragment_to_transferFragment"
+            app:destination="@id/transferFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transferFragment"
+        android:name="com.leobank.TransferFragment"
+        android:label="fragment_transfer"
+        tools:layout="@layout/fragment_transfer" >
+        <action
+            android:id="@+id/action_transferFragment_to_anotherCardIncreaseFragment"
+            app:destination="@id/anotherCardIncreaseFragment" />
+    </fragment>
+    <action
+        android:id="@+id/action_transferFragment_to_mainFragment"
+        app:destination="@id/mainFragment" />
+
 </navigation>

@@ -24,6 +24,9 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.emailAddFragment -> showBottomNavigation(false)
                 R.id.detailedCardFragment -> showBottomNavigation(false)
+                R.id.balanceIncreaseFragment -> showBottomNavigation(false)
+                R.id.transferFragment -> showBottomNavigation(false)
+                R.id.anotherCardIncreaseFragment -> showBottomNavigation(false)
                 else -> showBottomNavigation(true)
             }
         }

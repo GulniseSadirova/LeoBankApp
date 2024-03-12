@@ -20,6 +20,8 @@ class BalanceIncreaseFragment : Fragment() {
     ): View? {
         binding= FragmentBalanceIncreaseBinding.inflate(inflater,container,false)
         balanceİncreaseBack()
+        anotherCardIncrease()
+        cashMoney()
         return binding.root
     }
     private fun balanceİncreaseBack(){
@@ -27,6 +29,19 @@ class BalanceIncreaseFragment : Fragment() {
             findNavController().navigate(R.id.action_balanceIncreaseFragment_to_mainFragment)
         }
     }
+    private fun anotherCardIncrease(){
+        binding.imageAnotherCard.setOnClickListener {
+            findNavController().navigate(R.id.action_balanceIncreaseFragment_to_anotherCardIncreaseFragment)
+        }
+
+    }
+    private fun cashMoney(){
+        binding.imageNagd.setOnClickListener {
+
+        }
+
+    }
+
 
 
 }
