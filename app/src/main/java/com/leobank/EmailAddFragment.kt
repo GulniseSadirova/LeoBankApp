@@ -41,7 +41,7 @@ class EmailAddFragment : Fragment() {
                 binding.edtPassword.text.toString()
             ).addOnSuccessListener {
                 Toast.makeText(requireContext(), "İstifadəçi uğurla daxil oldu", Toast.LENGTH_LONG).show()
-                findNavController().navigate(R.id.action_emailAddFragment_to_mainFragment)
+                findNavController().navigate(R.id.action_emailAddFragment_to_thansForSignUpFragment)
             }.addOnFailureListener { exception ->
                 val message = exception.message
                 Toast.makeText(requireContext(), "İstifadəçi uğurla daxil ola bilmədi: $message", Toast.LENGTH_LONG).show()

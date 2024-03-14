@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/emailAddFragment">
+    app:startDestination="@id/numberAddFragment">
 
     <fragment
         android:id="@+id/emailAddFragment"
@@ -11,8 +11,8 @@
         android:label="fragment_email_add"
         tools:layout="@layout/fragment_email_add" >
         <action
-            android:id="@+id/action_emailAddFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            android:id="@+id/action_emailAddFragment_to_thansForSignUpFragment"
+            app:destination="@id/thansForSignUpFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
@@ -133,5 +133,44 @@
     <action
         android:id="@+id/action_transferFragment_to_mainFragment"
         app:destination="@id/mainFragment" />
+    <fragment
+        android:id="@+id/numberAddFragment"
+        android:name="com.leobank.NumberAddFragment"
+        android:label="fragment_number_add"
+        tools:layout="@layout/fragment_number_add" >
+        <action
+            android:id="@+id/action_numberAddFragment_to_smsAddFragment"
+            app:destination="@id/smsAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/smsAddFragment"
+        android:name="com.leobank.smsAddFragment"
+        android:label="fragment_sms_add"
+        tools:layout="@layout/fragment_sms_add" >
+        <action
+            android:id="@+id/action_smsAddFragment_to_emailAddFragment"
+            app:destination="@id/emailAddFragment" />
+        <action
+            android:id="@+id/action_smsAddFragment_to_pinCodeFragment2"
+            app:destination="@id/pinCodeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/thansForSignUpFragment"
+        android:name="com.leobank.ThansForSignUpFragment"
+        android:label="fragment_thans_for_sign_up"
+        tools:layout="@layout/fragment_thans_for_sign_up" >
+        <action
+            android:id="@+id/action_thansForSignUpFragment_to_numberAddFragment"
+            app:destination="@id/numberAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pinCodeFragment"
+        android:name="com.leobank.PinCodeFragment"
+        android:label="fragment_pin_code"
+        tools:layout="@layout/fragment_pin_code" >
+        <action
+            android:id="@+id/action_pinCodeFragment_to_mainFragment2"
+            app:destination="@id/mainFragment" />
+    </fragment>
 
 </navigation>

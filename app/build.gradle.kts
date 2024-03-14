@@ -47,6 +47,7 @@ android {
 dependencies {
 
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    implementation("com.google.firebase:firebase-analytics:21.5.1")
     val lifecycle_version = "2.6.2"
     val room_version = "2.6.0"
     val retrofit_version="2.9.0"
@@ -87,6 +88,8 @@ dependencies {
     kapt("com.google.dagger:hilt-android-compiler:2.50")
     implementation(platform("com.google.firebase:firebase-bom:32.7.4"))
     implementation("com.google.firebase:firebase-auth")
+
+
     implementation("com.google.firebase:firebase-firestore")
 
 }

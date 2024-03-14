@@ -51,9 +51,9 @@ class Adapter:RecyclerView.Adapter<Adapter.ProductViewHolder>() {
                 binding.title.text=item.title
                 binding.explanation.text=item.explanation
                 binding.price.text="$${item.price}"
-//                Glide.with(binding.root)
-//                    .load(item.imageUrl)
-//                    .into(binding.image)
+                Glide.with(binding.root)
+                    .load(item.imageUrl)
+                    .into(binding.image)
 
             }
 

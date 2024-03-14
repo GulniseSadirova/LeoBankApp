@@ -36,7 +36,7 @@ class AnotherCardIncreaseFragment : Fragment() {
     }
     private fun back(){
         binding.imageBack.setOnClickListener {
-            findNavController().navigate(R.id.action_transferFragment_to_anotherCardIncreaseFragment)
+            findNavController().navigate(R.id.action_anotherCardIncreaseFragment_to_balanceIncreaseFragment)
 
         }
     }
