@@ -1,8 +1,6 @@
 package com.leobank
 
 import android.content.ContentValues.TAG
-import android.content.Context
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -27,25 +25,19 @@ import kotlinx.coroutines.launch
 
 
 class MainFragment : Fragment() {
-    private lateinit var binding: FragmentMainBinding
-    private lateinit var adapter: Adapter
+  private lateinit var binding: FragmentMainBinding
+  private lateinit var adapter: Adapter
     private lateinit var viewModel: MainFragmentViewModel
     private var productList: ArrayList<Spending> = ArrayList()
-    private lateinit var sharedPreferences: SharedPreferences
+
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMainBinding.inflate(inflater, container, false)
+        binding=FragmentMainBinding.inflate(inflater,container,false)
         click()
-        sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-        // Kayıtlı toplam miktarı al ve txtMebleg üzerine yaz
-        val totalAmount = sharedPreferences.getFloat("totalAmount", 0f)
-        viewModel = ViewModelProvider(this).get(MainFragmentViewModel::class.java)
-        viewModel.setTotalAmount(totalAmount.toDouble())
-        binding.txtMebleg.text = totalAmount.toString()
 
 
         return binding.root
@@ -53,15 +45,13 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainFragmentViewModel::class.java)
+        viewModel=ViewModelProvider(this).get(MainFragmentViewModel::class.java)
         setAdapter()
         observeProducts()
         lifecycleScope.launch(Dispatchers.Main) {
             viewModel.getAllProducts(requireContext())
         }
-        lifecycleScope.launch(Dispatchers.Main) {
-            viewModel.addToTotalAmount(130.0)
-        }
+
         balanceIncrease()
         sendCard()
         payment()
@@ -71,55 +61,43 @@ class MainFragment : Fragment() {
         }
         viewModel.totalAmount.observe(viewLifecycleOwner) { total ->
             binding.txtMebleg.text = "$total"
-            saveTotalAmount(total)
         }
 
     }
-
-    private fun click() {
+    private fun click(){
         binding.myLeoCard.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_detailedCardFragment)
         }
     }
-
-    private fun balanceIncrease() {
+    private fun balanceIncrease(){
         binding.imageAdd.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_balanceIncreaseFragment)
         }
     }
-
-    private fun sendCard() {
+    private fun sendCard(){
         binding.imageForward.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_sendToCardFragment)
         }
     }
-
-    private fun payment() {
+    private fun payment(){
         binding.imageWallet.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_paymentFragment)
         }
     }
 
     private fun setAdapter() {
-        adapter = Adapter()
+            adapter = Adapter()
         binding.recylerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recylerView.adapter = adapter
 
     }
-
     private fun observeProducts() {
         viewModel.productList.observe(viewLifecycleOwner) { productList ->
             adapter.submitList(productList)
             this.productList.clear()
             this.productList.addAll(productList)
         }
-
     }
-    private fun saveTotalAmount(total: Double) {
-        // SharedPreferences'e toplam miktarı kaydet
-        sharedPreferences.edit().putFloat("totalAmount", total.toFloat()).apply()
-    }
-
 
 
 
