@@ -1,6 +1,9 @@
 package com.leobank
 
 import android.content.ContentValues.TAG
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.tasks.Task
 import com.google.firebase.Firebase
@@ -30,74 +34,116 @@ class NumberAddFragment : Fragment() {
     private lateinit var firebaseAuth: FirebaseAuth
     private var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks? = null
     private var verificationId: String = ""
+    private lateinit var number:String
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentNumberAddBinding.inflate(inflater, container, false)
-        firebaseAuth = FirebaseAuth.getInstance()
-
-        // Callbacks tanımlaması
-        callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-            override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-                signInWithPhoneAuthCredential(credential)
-                Log.d(TAG, "onVerificationCompleted:$credential")
-            }
-
-            override fun onVerificationFailed(e: FirebaseException) {
-                Log.w(TAG, "onVerificationFailed", e)
-                if (e is FirebaseAuthInvalidCredentialsException) {
-                    // Geçersiz istek
-                } else if (e is FirebaseTooManyRequestsException) {
-                    // Proje için SMS kotası aşıldı
-                } else if (e is FirebaseAuthMissingActivityForRecaptchaException) {
-                    // reCAPTCHA doğrulaması null Activity ile yapıldı
-                }
-                // Hata durumuna göre işlemler yapılabilir
-            }
-
-            override fun onCodeSent(verificationId: String, token: PhoneAuthProvider.ForceResendingToken) {
-                Log.d(TAG, "onCodeSent:$verificationId")
-                this@NumberAddFragment.verificationId = verificationId
-            }
-        }
-
+        init()
+        sharedPreferences = requireActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         binding.bttnIrali.setOnClickListener {
-            val phoneNumber = binding.editTextNumber.text.toString().trim()
-            startPhoneNumberVerification(phoneNumber)
+            number = binding.editTextNumber.text.trim().toString()
+            if (number.isNotEmpty()) {
+                if (number.length == 10) {
+                    number = "+90$number"
+                    val options = PhoneAuthOptions.newBuilder(firebaseAuth)
+                        .setPhoneNumber(number)       // Phone number to verify
+                        .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
+                        .setActivity(requireActivity()) // Activity (for callback binding)
+                        .setCallbacks(callbacks!!) // OnVerificationStateChangedCallbacks
+                        .build()
+                    PhoneAuthProvider.verifyPhoneNumber(options)
+
+                } else {
+                    Toast.makeText(requireContext(), "Please Enter correct Number", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(requireContext(), "Please Enter Number", Toast.LENGTH_SHORT).show()
+            }
         }
 
         return binding.root
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        firebaseAuth = FirebaseAuth.getInstance()
 
-    private fun startPhoneNumberVerification(phone: String) {
-        val options = callbacks?.let {
-            PhoneAuthOptions.newBuilder(firebaseAuth)
-                .setPhoneNumber(phone)
-                .setTimeout(60L, TimeUnit.SECONDS)
-                .setActivity(requireActivity())
-                .setCallbacks(it)
-                .build()
-        }
-        if (options != null) {
-            PhoneAuthProvider.verifyPhoneNumber(options)
+        // Eğer daha önce giriş yapıldıysa ve bayrak varsa ana fragmente yönlendir
+        if (isUserLoggedIn()) {
+            sendToMain()
         }
     }
 
-    private fun verifyPhoneNumberWithCode(code: String) {
-        val credential = PhoneAuthProvider.getCredential(verificationId, code)
-        signInWithPhoneAuthCredential(credential)
+    private fun init() {
+        firebaseAuth = FirebaseAuth.getInstance()
+        callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+
+            override fun onVerificationCompleted(credential: PhoneAuthCredential) {
+                signInWithPhoneAuthCredential(credential)
+            }
+
+            override fun onVerificationFailed(e: FirebaseException) {
+                if (e is FirebaseAuthInvalidCredentialsException) {
+                    Log.d("TAG", "onVerificationFailed: ${e.toString()}")
+                } else if (e is FirebaseTooManyRequestsException) {
+                    Log.d("TAG", "onVerificationFailed: ${e.toString()}")
+                }
+
+            }
+
+            override fun onCodeSent(
+                verificationId: String,
+                token: PhoneAuthProvider.ForceResendingToken
+            ) {
+                findNavController().navigate(
+                    R.id.action_numberAddFragment_to_smsAddFragment,
+                    bundleOf(
+                        "OTP" to verificationId,
+                        "resendToken" to token,
+                        "phoneNumber" to number
+                    )
+                )
+            }
+
+        }
     }
 
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         firebaseAuth.signInWithCredential(credential)
-            .addOnSuccessListener {
-                val phone = firebaseAuth.currentUser?.phoneNumber
-                Toast.makeText(requireContext(), "Başarınız: $phone", Toast.LENGTH_SHORT).show()
+            .addOnCompleteListener(requireActivity()) { task ->
+                if (task.isSuccessful) {
+                    saveUserLoggedInFlag(true)
+                    Toast.makeText(requireContext(), "Authenticate Successfully", Toast.LENGTH_SHORT).show()
+                    sendToMain()
+                } else {
+                    Log.d("TAG", "signInWithPhoneAuthCredential: ${task.exception.toString()}")
+                    if (task.exception is FirebaseAuthInvalidCredentialsException) {
+                        // The verification code entered was invalid
+                    }
+                    // Update UI
+                }
             }
-            .addOnFailureListener {
-                Toast.makeText(requireContext(), "Doğrulama başarısız", Toast.LENGTH_SHORT).show()
-            }
+    }
+
+    private fun sendToMain() {
+        val intent = Intent(requireContext(), MainActivity::class.java)
+        startActivity(intent)
+        requireActivity().finish()
+    }
+    private fun isUserLoggedIn(): Boolean {
+        return sharedPreferences.getBoolean("userLoggedIn", false)
+    }
+    private fun saveUserLoggedInFlag(loggedIn: Boolean) {
+        sharedPreferences.edit().putBoolean("userLoggedIn", loggedIn).apply()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (firebaseAuth.currentUser != null) {
+            sendToMain()
+        }
     }
 }

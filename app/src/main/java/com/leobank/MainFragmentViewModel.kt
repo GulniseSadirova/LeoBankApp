@@ -40,6 +40,10 @@ class MainFragmentViewModel:ViewModel() {
                 Log.e(TAG, "Error getting products", exception)
             }
     }
+    fun setTotalAmount(amount: Double) {
+        _totalAmount.value = amount
+    }
+
 
     fun addToTotalAmount(amount: Double) {
         val currentTotal = _totalAmount.value ?: 0.0

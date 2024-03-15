@@ -22,6 +22,10 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
+                R.id.numberAddFragment -> showBottomNavigation(false)
+                R.id.smsAddFragment -> showBottomNavigation(false)
+                R.id.pinCodeFragment -> showBottomNavigation(false)
+                R.id.thansForSignUpFragment -> showBottomNavigation(false)
                 R.id.emailAddFragment -> showBottomNavigation(false)
                 R.id.detailedCardFragment -> showBottomNavigation(false)
                 R.id.balanceIncreaseFragment -> showBottomNavigation(false)
