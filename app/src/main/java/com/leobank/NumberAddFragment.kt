@@ -50,10 +50,10 @@ class NumberAddFragment : Fragment() {
                 if (number.length == 10) {
                     number = "+90$number"
                     val options = PhoneAuthOptions.newBuilder(firebaseAuth)
-                        .setPhoneNumber(number)       // Phone number to verify
-                        .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-                        .setActivity(requireActivity()) // Activity (for callback binding)
-                        .setCallbacks(callbacks!!) // OnVerificationStateChangedCallbacks
+                        .setPhoneNumber(number)
+                        .setTimeout(60L, TimeUnit.SECONDS)
+                        .setActivity(requireActivity())
+                        .setCallbacks(callbacks!!)
                         .build()
                     PhoneAuthProvider.verifyPhoneNumber(options)
 
@@ -71,7 +71,6 @@ class NumberAddFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         firebaseAuth = FirebaseAuth.getInstance()
 
-        // Eğer daha önce giriş yapıldıysa ve bayrak varsa ana fragmente yönlendir
         if (isUserLoggedIn()) {
             sendToMain()
         }
@@ -121,9 +120,8 @@ class NumberAddFragment : Fragment() {
                 } else {
                     Log.d("TAG", "signInWithPhoneAuthCredential: ${task.exception.toString()}")
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
-                        // The verification code entered was invalid
                     }
-                    // Update UI
+
                 }
             }
     }

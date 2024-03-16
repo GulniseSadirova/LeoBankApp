@@ -45,7 +45,6 @@ class SingleItemFragment : Fragment() {
                     .load(item.imageUrl)
                     .into(binding.image)
             } else {
-                Log.d("SingleItemFragment", "Item not found for itemId: $itemId")
                 Toast.makeText(requireContext(), "Ürün bulunamadı.", Toast.LENGTH_SHORT).show()
             }
         }

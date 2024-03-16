@@ -1,6 +1,7 @@
 package com.leobank
 
 import android.content.ContentValues
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -23,8 +24,6 @@ class SingleItemViewModel : ViewModel() {
             .addOnSuccessListener { querySnapshot ->
                 val productList = mutableListOf<Spending>()
                 for (document in querySnapshot.documents) {
-                    val sizeList = document.get("size") as? List<String> ?: emptyList()
-
                     val product = Spending(
                         itemId = document.getLong("id")?.toInt() ?: 0,
                         title = document.getString("title") ?: "",

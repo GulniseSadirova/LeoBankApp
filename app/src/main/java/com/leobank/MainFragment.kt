@@ -56,7 +56,9 @@ class MainFragment : Fragment() {
         }
         adapter.setOnItemClickListener(object : Adapter.OnItemClickListener {
             override fun onItemClick(item: Spending) {
-               findNavController().navigate(R.id.action_mainFragment_to_singleItemFragment)
+                val bundle = Bundle()
+                bundle.putInt("id", item.itemId)
+                findNavController().navigate(R.id.action_mainFragment_to_singleItemFragment, bundle)
             }
         })
 

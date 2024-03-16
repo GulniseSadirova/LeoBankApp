@@ -38,7 +38,6 @@ class PinCodeFragment : Fragment() {
         binding.B8.setOnClickListener { appendDigit("8") }
         binding.B9.setOnClickListener { appendDigit("9") }
 
-        // Silme (Remove) butonuna tıklama işlemi
         binding.BRemove.setOnClickListener {
             if (enteredDigits.isNotEmpty()) {
                 enteredDigits.deleteCharAt(enteredDigits.length - 1)
@@ -46,38 +45,24 @@ class PinCodeFragment : Fragment() {
             }
         }
 
-        // EditText dinleyicisi
-        binding.editTextNumberPassword.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                // Boş bırak
-            }
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                // Boş bırak
-            }
 
-            override fun afterTextChanged(s: Editable?) {
-                // Boş bırak
-            }
-        })
     }
 
-    // Rakam ekleme işlemi
+
     private fun appendDigit(digit: String) {
         if (enteredDigits.length < 4) {
             enteredDigits.append(digit)
             updatePinDisplay()
 
-            // Eğer 4 hane girildiyse işlemi kontrol et
             if (enteredDigits.length == 4) {
-                val correctPin = "1234" // Doğru PIN'i buraya yazın
+                val correctPin = "1234"
 
                 if (enteredDigits.toString() == correctPin) {
-                    // Doğru PIN ise MainFragment'e geçiş yap
                     val navController = findNavController()
                     navController.navigate(R.id.action_pinCodeFragment_to_mainFragment2)
                 } else {
-                    // Yanlış PIN mesajı göster
+
                     Toast.makeText(requireContext(), "Yanlış PIN Kodu", Toast.LENGTH_SHORT).show()
                     enteredDigits.clear()
                     updatePinDisplay()
@@ -86,7 +71,7 @@ class PinCodeFragment : Fragment() {
         }
     }
 
-    // EditText'te girilen rakamları güncelle
+
     private fun updatePinDisplay() {
         binding.editTextNumberPassword.setText(enteredDigits.toString())
     }

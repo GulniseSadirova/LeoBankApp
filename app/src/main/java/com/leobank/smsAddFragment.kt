@@ -88,11 +88,11 @@ class smsAddFragment : Fragment() {
 
     private fun resendVerificationCode() {
         val options = PhoneAuthOptions.newBuilder(firebaseAuth)
-            .setPhoneNumber(phoneNumber)       // Phone number to verify
-            .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-            .setActivity(requireActivity())                 // Activity (for callback binding)
+            .setPhoneNumber(phoneNumber)
+            .setTimeout(60L, TimeUnit.SECONDS)
+            .setActivity(requireActivity())
             .setCallbacks(callbacks)
-            .setForceResendingToken(resendToken)// OnVerificationStateChangedCallbacks
+            .setForceResendingToken(resendToken)
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
@@ -136,7 +136,7 @@ class smsAddFragment : Fragment() {
                 } else {
                     Log.d("TAG", "signInWithPhoneAuthCredential: ${task.exception.toString()}")
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
-                        // The verification code entered was invalid
+
                     }
                 }
 
