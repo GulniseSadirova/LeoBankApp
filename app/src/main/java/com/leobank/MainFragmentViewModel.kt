@@ -48,21 +48,7 @@ class MainFragmentViewModel:ViewModel() {
     fun addToTotalAmount(amount: Double) {
         val currentTotal = _totalAmount.value ?: 0.0
         _totalAmount.value = currentTotal + amount
-        saveTotalAmountToFirestore(currentTotal + amount)
     }
-    private fun saveTotalAmountToFirestore(total: Double) {
 
-        val userId = "8Xj96yvMMsUuOweN5gtUky54qbH2"
-
-        val docRef = firestore.collection("amount").document(userId)
-
-        docRef.update("totalAmount", total)
-            .addOnSuccessListener {
-                Log.d(TAG, "Total amount updated successfully")
-            }
-            .addOnFailureListener { e ->
-                Log.e(TAG, "Error updating total amount", e)
-            }
-    }
 
 }

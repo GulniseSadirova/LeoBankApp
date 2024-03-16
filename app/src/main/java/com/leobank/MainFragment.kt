@@ -1,24 +1,15 @@
 package com.leobank
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
-import com.google.firebase.Firebase
-import com.google.firebase.auth.auth
-import com.google.firebase.firestore.SetOptions
-import com.google.firebase.firestore.firestore
 import com.leobank.databinding.FragmentMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -52,6 +43,7 @@ class MainFragment : Fragment() {
             viewModel.getAllProducts(requireContext())
         }
 
+
         balanceIncrease()
         sendCard()
         payment()
@@ -62,13 +54,21 @@ class MainFragment : Fragment() {
         viewModel.totalAmount.observe(viewLifecycleOwner) { total ->
             binding.txtMebleg.text = "$total"
         }
+        adapter.setOnItemClickListener(object : Adapter.OnItemClickListener {
+            override fun onItemClick(item: Spending) {
+               findNavController().navigate(R.id.action_mainFragment_to_singleItemFragment)
+            }
+        })
 
     }
+
     private fun click(){
         binding.myLeoCard.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_detailedCardFragment)
         }
     }
+
+
     private fun balanceIncrease(){
         binding.imageAdd.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_balanceIncreaseFragment)
@@ -86,11 +86,16 @@ class MainFragment : Fragment() {
     }
 
     private fun setAdapter() {
-            adapter = Adapter()
+        adapter = Adapter(object : Adapter.OnItemClickListener {
+            override fun onItemClick(spending: Spending) {
+                val action = MainFragmentDirections.actionMainFragmentToSingleItemFragment()
+                findNavController().navigate(action)
+            }
+        })
         binding.recylerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recylerView.adapter = adapter
-
     }
+
     private fun observeProducts() {
         viewModel.productList.observe(viewLifecycleOwner) { productList ->
             adapter.submitList(productList)

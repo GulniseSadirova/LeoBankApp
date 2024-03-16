@@ -34,9 +34,9 @@
         <action
             android:id="@+id/action_mainFragment_to_paymentFragment"
             app:destination="@id/paymentFragment" />
-        <argument
-            android:name="mebleg"
-            app:argType="integer" />
+        <action
+            android:id="@+id/action_mainFragment_to_singleItemFragment"
+            app:destination="@id/singleItemFragment" />
     </fragment>
     <fragment
         android:id="@+id/creditsFragment"
@@ -170,6 +170,15 @@
         tools:layout="@layout/fragment_pin_code" >
         <action
             android:id="@+id/action_pinCodeFragment_to_mainFragment2"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singleItemFragment"
+        android:name="com.leobank.SingleItemFragment"
+        android:label="fragment_single_item"
+        tools:layout="@layout/fragment_single_item" >
+        <action
+            android:id="@+id/action_singleItemFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
     </fragment>
 

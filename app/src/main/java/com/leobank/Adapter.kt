@@ -2,13 +2,21 @@ package com.leobank
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.leobank.databinding.ItemSpendingBinding
 
-class Adapter:RecyclerView.Adapter<Adapter.ProductViewHolder>() {
+class Adapter(private var listener: OnItemClickListener):RecyclerView.Adapter<Adapter.ProductViewHolder>() {
+
+    interface OnItemClickListener {
+        fun onItemClick(item: Spending)
+    }
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.listener = listener
+    }
     private val diffCallback=object :DiffUtil.ItemCallback<Spending>(){
         override fun areItemsTheSame(oldItem: Spending, newItem: Spending): Boolean {
             return oldItem==newItem
@@ -40,6 +48,7 @@ class Adapter:RecyclerView.Adapter<Adapter.ProductViewHolder>() {
                 binding.root.setOnClickListener {
                     val position=adapterPosition
                     if (position!=RecyclerView.NO_POSITION){
+                        listener.onItemClick(diffUtil.currentList[position])
 
                     }
                 }
