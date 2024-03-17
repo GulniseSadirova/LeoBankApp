@@ -23,15 +23,14 @@ class SingleItemViewModel : ViewModel() {
         Log.d("SingleItemViewModel", "fetchProducts - itemId: $itemId")
 
         firestore.collection("spendings")
-            .whereEqualTo("id", itemId)
+            .whereEqualTo("itemId", itemId)
             .get()
             .addOnSuccessListener { querySnapshot ->
                 val productList = mutableListOf<Spending>()
                 for (document in querySnapshot.documents) {
-                    val sizeList = document.get("size") as? List<String> ?: emptyList()
 
                     val product = Spending(
-                        itemId = document.getLong("id")?.toInt() ?: 0,
+                        itemId = document.getLong("itemId")?.toInt() ?: 0,
                         title = document.getString("title") ?: "",
                         explanation = document.getString("explanation") ?: "",
                         imageUrl = document.getString("imageUrl") ?: "",

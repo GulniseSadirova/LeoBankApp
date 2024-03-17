@@ -1,6 +1,8 @@
 package com.leobank
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -44,7 +46,7 @@ class MainFragment : Fragment() {
         setAdapter()
         observeProducts()
         lifecycleScope.launch(Dispatchers.Main) {
-            viewModel.getAllProducts(requireContext())
+            viewModel.getAllProducts()
         }
 
 
@@ -61,7 +63,8 @@ class MainFragment : Fragment() {
         adapter.setOnItemClickListener(object : Adapter.OnItemClickListener {
             override fun onItemClick(item: Spending) {
                 val bundle = Bundle()
-                bundle.putString("id", item.itemId.toString())
+                bundle.putInt("id", item.itemId)
+                Log.e(TAG, "onItemClick: ${item.itemId}", )
                 findNavController().navigate(R.id.action_mainFragment_to_singleItemFragment, bundle)
             }
         })

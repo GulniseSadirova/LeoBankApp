@@ -20,7 +20,7 @@ class MainFragmentViewModel:ViewModel() {
         get() = _totalAmount
 
 
-    fun getAllProducts(context: Context) {
+    fun getAllProducts() {
        fetchProducts()
         }
 

@@ -1,6 +1,7 @@
 package com.leobank
 
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -30,8 +31,9 @@ class SingleItemFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(SingleItemViewModel::class.java)
-        itemId = arguments?.getString("id")?.toInt() ?: 0
+        itemId = arguments?.getInt("id") ?: 0
         viewModel.fetchProducts(itemId)
+        Log.e(TAG, "onViewCreated: ${arguments?.getInt("id")}" )
 
         viewModel.items.observe(viewLifecycleOwner) { productList ->
             val item = productList.find { it.itemId == itemId }
