@@ -115,8 +115,14 @@ class NumberAddFragment : Fragment() {
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
                     saveUserLoggedInFlag(true)
+                    val firebaseUser = firebaseAuth.currentUser
+                    val userId = firebaseUser?.uid ?: ""
+                    val userName = firebaseUser?.displayName ?: ""
+                    val userBalance = 0.0
+                    saveUserData(userId, userName, userBalance)
                     Toast.makeText(requireContext(), "Authenticate Successfully", Toast.LENGTH_SHORT).show()
                     sendToMain()
+
                 } else {
                     Log.d("TAG", "signInWithPhoneAuthCredential: ${task.exception.toString()}")
                     if (task.exception is FirebaseAuthInvalidCredentialsException) {
@@ -125,6 +131,15 @@ class NumberAddFragment : Fragment() {
                 }
             }
     }
+    private fun saveUserData(userId: String, userName: String, userBalance: Double) {
+        val sharedPrefs = requireActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPrefs.edit()
+        editor.putString("userId", userId)
+        editor.putString("userName", userName)
+        editor.putFloat("userBalance", userBalance.toFloat())
+        editor.apply()
+    }
+
 
     private fun sendToMain() {
         val intent = Intent(requireContext(), MainActivity::class.java)

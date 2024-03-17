@@ -50,7 +50,7 @@ class EdvAdapter : RecyclerView.Adapter<EdvAdapter.ProductViewHolder>() {
         fun bind(item: Edv) {
             binding.txtEdv.text = item.edv.toString()
             binding.txtMebleg.text = item.mebleg.toString()
-            binding.ficsalD.text = "$${item.ficsalİd}"
+            binding.ficsalD.text = item.ficsalİd
         }
     }
 

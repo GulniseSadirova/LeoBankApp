@@ -14,9 +14,10 @@
         android:background="@drawable/rounded_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.82"
+        app:layout_constraintHeight_percent="0.79"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
 
     <TextView
         android:id="@+id/txtKartaKocurme"
@@ -28,25 +29,26 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintHorizontal_bias="0.108"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.457" />
-
+        app:layout_constraintVertical_bias="0.466" />
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/SearchView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="10dp"
+        android:layout_marginBottom="10dp"
         android:background="#BEAFD8"
 
         app:iconifiedByDefault="false"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.789"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtKartaKocurme"
+        app:layout_constraintVertical_bias="0.0"
         app:queryHint="Search here.." />
 
     <ImageView

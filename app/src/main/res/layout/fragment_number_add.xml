@@ -95,6 +95,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:text="5340160257"
+        android:gravity="center"
         android:textStyle="bold"
         android:textSize="20sp"
         android:inputType="number"

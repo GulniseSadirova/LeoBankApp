@@ -19,11 +19,17 @@ class SingleItemViewModel : ViewModel() {
 
     private val firestore = Firebase.firestore
 
-    fun fetchProducts() {
-        firestore.collection("spendings").get()
+    fun fetchProducts(itemId: Int) {
+        Log.d("SingleItemViewModel", "fetchProducts - itemId: $itemId")
+
+        firestore.collection("spendings")
+            .whereEqualTo("id", itemId)
+            .get()
             .addOnSuccessListener { querySnapshot ->
                 val productList = mutableListOf<Spending>()
                 for (document in querySnapshot.documents) {
+                    val sizeList = document.get("size") as? List<String> ?: emptyList()
+
                     val product = Spending(
                         itemId = document.getLong("id")?.toInt() ?: 0,
                         title = document.getString("title") ?: "",
@@ -34,9 +40,11 @@ class SingleItemViewModel : ViewModel() {
                     productList.add(product)
                 }
                 _items.postValue(productList)
+                Log.d("SingleItemViewModel", "fetchProducts - productList size: ${productList.size}")
             }
             .addOnFailureListener { exception ->
                 Log.e(ContentValues.TAG, "Error getting products", exception)
             }
     }
+
 }

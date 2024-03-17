@@ -105,10 +105,9 @@ class smsAddFragment : Fragment() {
 
         override fun onVerificationFailed(e: FirebaseException) {
             if (e is FirebaseAuthInvalidCredentialsException) {
-                // Invalid request
                 Log.d("TAG", "onVerificationFailed: ${e.toString()}")
             } else if (e is FirebaseTooManyRequestsException) {
-                // The SMS quota for the project has been exceeded
+
                 Log.d("TAG", "onVerificationFailed: ${e.toString()}")
             }
 

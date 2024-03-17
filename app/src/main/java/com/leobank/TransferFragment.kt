@@ -23,17 +23,12 @@ class TransferFragment : Fragment() {
         binding = FragmentTransferBinding.inflate(inflater, container, false)
         back()
         setupClickListeners()
-        return binding.root
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+
         transferViewModel = ViewModelProvider(requireActivity()).get(TransferViewModel::class.java)
+        transferViewModel.initSharedPreferences(requireContext())
 
-        transferViewModel.cardNumber.observe(viewLifecycleOwner) { cardNumber ->
-            binding.txtKartNomre.text = cardNumber
-        }
-
+        return binding.root
     }
 
     private fun back() {
@@ -50,13 +45,14 @@ class TransferFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            transferViewModel.setTransferAmount(enteredAmount)
+            transferViewModel.updateTotalAmount(enteredAmount)
+            val newTotalAmount = transferViewModel.transferAmount.value ?: 0.0
+            Toast.makeText(requireContext(), "$enteredAmount Balansınız uğurla artırıldı", Toast.LENGTH_SHORT).show()
 
 
             findNavController().navigate(R.id.action_transferFragment_to_mainFragment)
         }
     }
-
 }
 
 

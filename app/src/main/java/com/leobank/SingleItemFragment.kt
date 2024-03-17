@@ -29,23 +29,19 @@ class SingleItemFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         viewModel = ViewModelProvider(this).get(SingleItemViewModel::class.java)
-        itemId = arguments?.getString("id")?.toIntOrNull() ?: 0
-
-        viewModel.fetchProducts()
+        itemId = arguments?.getString("id")?.toInt() ?: 0
+        viewModel.fetchProducts(itemId)
 
         viewModel.items.observe(viewLifecycleOwner) { productList ->
             val item = productList.find { it.itemId == itemId }
-            if (item != null) {
+            item?.let{
                 binding.textTitle.text = item.title
                 binding.textExplanation.text = item.explanation
                 binding.textPrice.text = item.price.toString()
                 Glide.with(this)
                     .load(item.imageUrl)
                     .into(binding.image)
-            } else {
-                Toast.makeText(requireContext(), "Ürün bulunamadı.", Toast.LENGTH_SHORT).show()
             }
         }
 

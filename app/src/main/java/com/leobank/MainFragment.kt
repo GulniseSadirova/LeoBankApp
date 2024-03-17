@@ -19,6 +19,7 @@ class MainFragment : Fragment() {
   private lateinit var binding: FragmentMainBinding
   private lateinit var adapter: Adapter
     private lateinit var viewModel: MainFragmentViewModel
+    private lateinit var transferViewModel: TransferViewModel
     private var productList: ArrayList<Spending> = ArrayList()
 
 
@@ -29,6 +30,9 @@ class MainFragment : Fragment() {
     ): View? {
         binding=FragmentMainBinding.inflate(inflater,container,false)
         click()
+        transferViewModel = ViewModelProvider(requireActivity()).get(TransferViewModel::class.java)
+        transferViewModel.initSharedPreferences(requireContext())
+
 
 
         return binding.root
@@ -57,7 +61,7 @@ class MainFragment : Fragment() {
         adapter.setOnItemClickListener(object : Adapter.OnItemClickListener {
             override fun onItemClick(item: Spending) {
                 val bundle = Bundle()
-                bundle.putInt("id", item.itemId)
+                bundle.putString("id", item.itemId.toString())
                 findNavController().navigate(R.id.action_mainFragment_to_singleItemFragment, bundle)
             }
         })

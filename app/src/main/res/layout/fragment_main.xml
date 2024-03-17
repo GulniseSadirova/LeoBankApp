@@ -222,5 +222,16 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="&#8380;"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txtMebleg"
+        app:layout_constraintStart_toEndOf="@+id/txtMebleg"
+        app:layout_constraintTop_toTopOf="@+id/txtMebleg" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
