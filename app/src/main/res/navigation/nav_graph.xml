@@ -64,6 +64,12 @@
         <action
             android:id="@+id/action_edvFragment_to_othersFragment"
             app:destination="@id/othersFragment" />
+        <action
+            android:id="@+id/action_edvFragment_to_singleEdvFragment"
+            app:destination="@id/singleEdvFragment" />
+        <action
+            android:id="@+id/action_edvFragment_to_scanFragment"
+            app:destination="@id/scanFragment" />
     </fragment>
     <fragment
         android:id="@+id/othersFragment"
@@ -180,6 +186,24 @@
         <action
             android:id="@+id/action_singleItemFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singleEdvFragment"
+        android:name="com.leobank.SingleEdvFragment"
+        android:label="fragment_single_edv"
+        tools:layout="@layout/fragment_single_edv" >
+        <action
+            android:id="@+id/action_singleEdvFragment_to_edvFragment"
+            app:destination="@id/edvFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scanFragment"
+        android:name="com.leobank.ScanFragment"
+        android:label="fragment_scan"
+        tools:layout="@layout/fragment_scan" >
+        <action
+            android:id="@+id/action_scanFragment_to_edvFragment"
+            app:destination="@id/edvFragment" />
     </fragment>
 
 </navigation>

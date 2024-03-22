@@ -5,11 +5,12 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".OthersFragment">
+
     <ImageView
         android:id="@+id/imagePresent"
         android:layout_width="75dp"
         android:layout_height="85dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
         android:src="@drawable/cashback"
         app:layout_constraintStart_toStartOf="parent"

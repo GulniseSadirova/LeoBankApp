@@ -2,6 +2,7 @@ package com.leobank
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -9,7 +10,14 @@ import com.bumptech.glide.Glide
 import com.leobank.databinding.ItemEdvBinding
 import com.leobank.databinding.ItemSpendingBinding
 
-class EdvAdapter : RecyclerView.Adapter<EdvAdapter.ProductViewHolder>() {
+class EdvAdapter(private var listener: OnItemClickListener) : RecyclerView.Adapter<EdvAdapter.ProductViewHolder>() {
+    interface OnItemClickListener {
+        fun onItemClick(item: Edv)
+    }
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.listener = listener
+    }
+
 
     private val diffCallback = object : DiffUtil.ItemCallback<Edv>() {
         override fun areItemsTheSame(oldItem: Edv, newItem: Edv): Boolean {
@@ -41,8 +49,7 @@ class EdvAdapter : RecyclerView.Adapter<EdvAdapter.ProductViewHolder>() {
             binding.root.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
-
-
+                    listener.onItemClick(diffUtil.currentList[position])
                 }
             }
         }
