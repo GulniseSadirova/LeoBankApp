@@ -1,13 +1,13 @@
-package com.leobank
+package com.leobank.presentation.viewmodel
 
 import android.content.ContentValues.TAG
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.leobank.domain.Spending
 
 class MainFragmentViewModel:ViewModel() {
     private val firestore = Firebase.firestore

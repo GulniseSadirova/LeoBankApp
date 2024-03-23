@@ -1,4 +1,4 @@
-package com.leobank
+package com.leobank.presentation.fragment
 
 
 
@@ -10,12 +10,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.leobank.domain.Edv
+import com.leobank.presentation.adapter.EdvAdapter
+import com.leobank.presentation.viewmodel.EdvFragmentViewModel
+import com.leobank.R
 
 import com.leobank.databinding.FragmentEdvBinding
 import kotlinx.coroutines.Dispatchers

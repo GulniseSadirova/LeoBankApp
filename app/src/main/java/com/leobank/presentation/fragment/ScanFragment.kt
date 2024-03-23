@@ -1,8 +1,7 @@
-package com.leobank
+package com.leobank.presentation.fragment
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -16,9 +15,9 @@ import androidx.core.content.PermissionChecker.checkSelfPermission
 import androidx.navigation.fragment.findNavController
 import com.budiyev.android.codescanner.AutoFocusMode
 import com.budiyev.android.codescanner.CodeScanner
-import com.budiyev.android.codescanner.CodeScannerView
 import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
+import com.leobank.R
 import com.leobank.databinding.FragmentScanBinding
 
 

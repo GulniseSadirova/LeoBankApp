@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/emailAddFragment"
-        android:name="com.leobank.EmailAddFragment"
+        android:name="com.leobank.presentation.fragment.EmailAddFragment"
         android:label="fragment_email_add"
         tools:layout="@layout/fragment_email_add" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.leobank.MainFragment"
+        android:name="com.leobank.presentation.fragment.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/creditsFragment"
-        android:name="com.leobank.CreditsFragment"
+        android:name="com.leobank.presentation.fragment.CreditsFragment"
         android:label="fragment_credits"
         tools:layout="@layout/fragment_credits" >
         <action
@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/capitalsFragment"
-        android:name="com.leobank.CapitalsFragment"
+        android:name="com.leobank.presentation.fragment.CapitalsFragment"
         android:label="fragment_capitals"
         tools:layout="@layout/fragment_capitals" >
         <action
@@ -58,7 +58,7 @@
     </fragment>
     <fragment
         android:id="@+id/edvFragment"
-        android:name="com.leobank.EdvFragment"
+        android:name="com.leobank.presentation.fragment.EdvFragment"
         android:label="fragment_edv"
         tools:layout="@layout/fragment_edv" >
         <action
@@ -73,12 +73,12 @@
     </fragment>
     <fragment
         android:id="@+id/othersFragment"
-        android:name="com.leobank.OthersFragment"
+        android:name="com.leobank.presentation.fragment.OthersFragment"
         android:label="fragment_others"
         tools:layout="@layout/fragment_others" />
     <fragment
         android:id="@+id/detailedCardFragment"
-        android:name="com.leobank.DetailedCardFragment"
+        android:name="com.leobank.presentation.fragment.DetailedCardFragment"
         android:label="fragment_detailed_card"
         tools:layout="@layout/fragment_detailed_card" >
         <action
@@ -87,7 +87,7 @@
     </fragment>
     <fragment
         android:id="@+id/balanceIncreaseFragment"
-        android:name="com.leobank.BalanceIncreaseFragment"
+        android:name="com.leobank.presentation.fragment.BalanceIncreaseFragment"
         android:label="fragment_balance_increase"
         tools:layout="@layout/fragment_balance_increase" >
         <action
@@ -99,7 +99,7 @@
     </fragment>
     <fragment
         android:id="@+id/sendToCardFragment"
-        android:name="com.leobank.SendToCardFragment"
+        android:name="com.leobank.presentation.fragment.SendToCardFragment"
         android:label="fragment_send_to_card"
         tools:layout="@layout/fragment_send_to_card" >
         <action
@@ -108,7 +108,7 @@
     </fragment>
     <fragment
         android:id="@+id/paymentFragment"
-        android:name="com.leobank.PaymentFragment"
+        android:name="com.leobank.presentation.fragment.PaymentFragment"
         android:label="fragment_payment"
         tools:layout="@layout/fragment_payment" >
         <action
@@ -117,7 +117,7 @@
     </fragment>
     <fragment
         android:id="@+id/anotherCardIncreaseFragment"
-        android:name="com.leobank.AnotherCardIncreaseFragment"
+        android:name="com.leobank.presentation.fragment.AnotherCardIncreaseFragment"
         android:label="fragment_another_card_increase"
         tools:layout="@layout/fragment_another_card_increase" >
         <action
@@ -129,7 +129,7 @@
     </fragment>
     <fragment
         android:id="@+id/transferFragment"
-        android:name="com.leobank.TransferFragment"
+        android:name="com.leobank.presentation.fragment.TransferFragment"
         android:label="fragment_transfer"
         tools:layout="@layout/fragment_transfer" >
         <action
@@ -141,7 +141,7 @@
         app:destination="@id/mainFragment" />
     <fragment
         android:id="@+id/numberAddFragment"
-        android:name="com.leobank.NumberAddFragment"
+        android:name="com.leobank.presentation.fragment.NumberAddFragment"
         android:label="fragment_number_add"
         tools:layout="@layout/fragment_number_add" >
         <action
@@ -150,7 +150,7 @@
     </fragment>
     <fragment
         android:id="@+id/smsAddFragment"
-        android:name="com.leobank.smsAddFragment"
+        android:name="com.leobank.presentation.fragment.smsAddFragment"
         android:label="fragment_sms_add"
         tools:layout="@layout/fragment_sms_add" >
         <action
@@ -162,7 +162,7 @@
     </fragment>
     <fragment
         android:id="@+id/thansForSignUpFragment"
-        android:name="com.leobank.ThansForSignUpFragment"
+        android:name="com.leobank.presentation.fragment.ThansForSignUpFragment"
         android:label="fragment_thans_for_sign_up"
         tools:layout="@layout/fragment_thans_for_sign_up" >
         <action
@@ -171,7 +171,7 @@
     </fragment>
     <fragment
         android:id="@+id/pinCodeFragment"
-        android:name="com.leobank.PinCodeFragment"
+        android:name="com.leobank.presentation.fragment.PinCodeFragment"
         android:label="fragment_pin_code"
         tools:layout="@layout/fragment_pin_code" >
         <action
@@ -180,7 +180,7 @@
     </fragment>
     <fragment
         android:id="@+id/singleItemFragment"
-        android:name="com.leobank.SingleItemFragment"
+        android:name="com.leobank.presentation.fragment.SingleItemFragment"
         android:label="fragment_single_item"
         tools:layout="@layout/fragment_single_item" >
         <action
@@ -189,7 +189,7 @@
     </fragment>
     <fragment
         android:id="@+id/singleEdvFragment"
-        android:name="com.leobank.SingleEdvFragment"
+        android:name="com.leobank.presentation.fragment.SingleEdvFragment"
         android:label="fragment_single_edv"
         tools:layout="@layout/fragment_single_edv" >
         <action
@@ -198,7 +198,7 @@
     </fragment>
     <fragment
         android:id="@+id/scanFragment"
-        android:name="com.leobank.ScanFragment"
+        android:name="com.leobank.presentation.fragment.ScanFragment"
         android:label="fragment_scan"
         tools:layout="@layout/fragment_scan" >
         <action

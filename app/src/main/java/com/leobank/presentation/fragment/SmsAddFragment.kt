@@ -1,6 +1,5 @@
-package com.leobank
+package com.leobank.presentation.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -20,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
+import com.leobank.R
 import com.leobank.databinding.FragmentSmsAddBinding
 import java.util.concurrent.TimeUnit
 

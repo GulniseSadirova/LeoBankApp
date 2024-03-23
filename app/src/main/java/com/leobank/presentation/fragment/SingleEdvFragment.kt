@@ -1,4 +1,4 @@
-package com.leobank
+package com.leobank.presentation.fragment
 
 import android.content.ContentValues.TAG
 import android.os.Bundle
@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.leobank.R
+import com.leobank.presentation.viewmodel.SingleEdvViewModel
 import com.leobank.databinding.FragmentSingleEdvBinding
 
 

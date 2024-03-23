@@ -1,4 +1,4 @@
-package com.leobank
+package com.leobank.domain
 
 data class Edv(
     val ficsalİd: String = "",

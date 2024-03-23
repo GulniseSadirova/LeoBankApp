@@ -1,4 +1,4 @@
-package com.leobank
+package com.leobank.presentation.viewmodel
 
 import android.content.Context
 import android.content.SharedPreferences

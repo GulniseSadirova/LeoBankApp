@@ -1,4 +1,4 @@
-package com.leobank
+package com.leobank.presentation.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
+import com.leobank.R
+import com.leobank.presentation.viewmodel.TransferViewModel
 import com.leobank.databinding.FragmentTransferBinding
 
 

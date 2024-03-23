@@ -1,43 +1,42 @@
-package com.leobank
+package com.leobank.presentation.viewmodel
 
 import android.content.ContentValues
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
+import com.leobank.domain.Edv
 
-class SingleItemViewModel : ViewModel() {
-    private val _items = MutableLiveData<List<Spending>>()
-    val items: LiveData<List<Spending>> = _items
+class SingleEdvViewModel: ViewModel() {
+    private val _items = MutableLiveData<List<Edv>>()
+    val items: LiveData<List<Edv>> = _items
 
     private val firestore = Firebase.firestore
+
 
     fun fetchProducts(itemId: Int) {
         Log.d("SingleItemViewModel", "fetchProducts - itemId: $itemId")
 
-        firestore.collection("spendings")
+        firestore.collection("edv")
             .whereEqualTo("itemId", itemId)
             .get()
             .addOnSuccessListener { querySnapshot ->
-                val productList = mutableListOf<Spending>()
+                val productList = mutableListOf<Edv>()
+
                 for (document in querySnapshot.documents) {
 
-                    val product = Spending(
+                    val product = Edv(
                         itemId = document.getLong("itemId")?.toInt() ?: 0,
-                        title = document.getString("title") ?: "",
-                        explanation = document.getString("explanation") ?: "",
-                        imageUrl = document.getString("imageUrl") ?: "",
-                        price = document.getLong("price")?.toInt() ?: 0
+                        ficsalİd = document.getString("ficsalİd") ?: "",
+                        edv = document.getLong("edv")?.toFloat() ?: 0.0f,
+                        mebleg = document.getLong("mebleg")?.toFloat() ?: 0.0f,
+                        date=document.getString("date") ?: ""
                     )
                     productList.add(product)
                 }
+
                 _items.postValue(productList)
                 Log.d("SingleItemViewModel", "fetchProducts - productList size: ${productList.size}")
             }
@@ -45,5 +44,4 @@ class SingleItemViewModel : ViewModel() {
                 Log.e(ContentValues.TAG, "Error getting products", exception)
             }
     }
-
 }

@@ -1,4 +1,4 @@
-package com.leobank
+package com.leobank.presentation.fragment
 
 import android.content.ContentValues.TAG
 import android.os.Bundle
@@ -12,6 +12,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.leobank.presentation.adapter.Adapter
+import com.leobank.presentation.viewmodel.MainFragmentViewModel
+import com.leobank.R
+import com.leobank.domain.Spending
+import com.leobank.presentation.viewmodel.TransferViewModel
 import com.leobank.databinding.FragmentMainBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

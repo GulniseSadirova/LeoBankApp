@@ -1,4 +1,4 @@
-package com.leobank
+package com.leobank.presentation.viewmodel
 
 import android.content.ContentValues
 import android.util.Log
@@ -7,35 +7,33 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.leobank.domain.Spending
 
-class SingleEdvViewModel: ViewModel() {
-    private val _items = MutableLiveData<List<Edv>>()
-    val items: LiveData<List<Edv>> = _items
+class SingleItemViewModel : ViewModel() {
+    private val _items = MutableLiveData<List<Spending>>()
+    val items: LiveData<List<Spending>> = _items
 
     private val firestore = Firebase.firestore
-
 
     fun fetchProducts(itemId: Int) {
         Log.d("SingleItemViewModel", "fetchProducts - itemId: $itemId")
 
-        firestore.collection("edv")
+        firestore.collection("spendings")
             .whereEqualTo("itemId", itemId)
             .get()
             .addOnSuccessListener { querySnapshot ->
-                val productList = mutableListOf<Edv>()
-
+                val productList = mutableListOf<Spending>()
                 for (document in querySnapshot.documents) {
 
-                    val product = Edv(
+                    val product = Spending(
                         itemId = document.getLong("itemId")?.toInt() ?: 0,
-                        ficsalİd = document.getString("ficsalİd") ?: "",
-                        edv = document.getLong("edv")?.toFloat() ?: 0.0f,
-                        mebleg = document.getLong("mebleg")?.toFloat() ?: 0.0f,
-                        date=document.getString("date") ?: ""
+                        title = document.getString("title") ?: "",
+                        explanation = document.getString("explanation") ?: "",
+                        imageUrl = document.getString("imageUrl") ?: "",
+                        price = document.getLong("price")?.toInt() ?: 0
                     )
                     productList.add(product)
                 }
-
                 _items.postValue(productList)
                 Log.d("SingleItemViewModel", "fetchProducts - productList size: ${productList.size}")
             }
@@ -43,4 +41,5 @@ class SingleEdvViewModel: ViewModel() {
                 Log.e(ContentValues.TAG, "Error getting products", exception)
             }
     }
+
 }

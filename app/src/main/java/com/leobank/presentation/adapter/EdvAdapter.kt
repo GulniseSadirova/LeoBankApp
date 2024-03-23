@@ -1,14 +1,12 @@
-package com.leobank
+package com.leobank.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import com.leobank.domain.Edv
 import com.leobank.databinding.ItemEdvBinding
-import com.leobank.databinding.ItemSpendingBinding
 
 class EdvAdapter(private var listener: OnItemClickListener) : RecyclerView.Adapter<EdvAdapter.ProductViewHolder>() {
     interface OnItemClickListener {
