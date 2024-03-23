@@ -42,6 +42,7 @@ class MainFragment : Fragment() {
 
 
 
+
         return binding.root
     }
 
@@ -78,7 +79,13 @@ class MainFragment : Fragment() {
 
     private fun click(){
         binding.myLeoCard.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_detailedCardFragment)
+            binding.myLeoCard.animate().apply {
+                rotationX(90f)
+                duration=500
+                withEndAction {
+                    findNavController().navigate(R.id.action_mainFragment_to_detailedCardFragment)
+                }
+            }
         }
     }
 
@@ -117,6 +124,7 @@ class MainFragment : Fragment() {
             this.productList.addAll(productList)
         }
     }
+
 
 
 
