@@ -48,6 +48,7 @@ dependencies {
 
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation("com.google.firebase:firebase-analytics:21.5.1")
+    implementation("com.android.car.ui:car-ui-lib:2.6.0")
     val lifecycle_version = "2.6.2"
     val room_version = "2.6.0"
     val retrofit_version="2.9.0"

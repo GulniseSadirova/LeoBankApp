@@ -21,6 +21,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.09" />
 
+
     <ImageView
         android:id="@+id/imageArtirilma"
         android:layout_width="64dp"
@@ -202,20 +203,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/statistic_up_svgrepo_com"
-                app:layout_constraintEnd_toStartOf="@+id/imageSearch"
+                app:layout_constraintEnd_toStartOf="@+id/searchView"
                 app:layout_constraintHorizontal_bias="1.0"
                 android:layout_marginRight="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imageSearch" />
+                app:layout_constraintTop_toTopOf="@+id/searchView" />
 
-            <ImageView
-                android:id="@+id/imageSearch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:src="@drawable/baseline_search_24"
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="30dp"
+                android:layout_height="23dp"
+
+
+                android:layout_marginTop="11dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.958"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/edtSearch"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+
+                android:ems="10"
+                android:hint="Search for product name"
+                android:inputType="text"
+
+                app:layout_constraintEnd_toStartOf="@+id/imageStatistic"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

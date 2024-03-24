@@ -5,11 +5,14 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.leobank.domain.Spending
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class MainFragmentViewModel:ViewModel() {
+class MainFragmentViewModel() : ViewModel() {
     private val firestore = Firebase.firestore
 
     private val _productList = MutableLiveData<List<Spending>>()
@@ -19,11 +22,9 @@ class MainFragmentViewModel:ViewModel() {
     val totalAmount: LiveData<Double>
         get() = _totalAmount
 
-
     fun getAllProducts() {
-       fetchProducts()
-        }
-
+        fetchProducts()
+    }
 
     private fun fetchProducts() {
         firestore.collection("spendings").get()
@@ -34,21 +35,21 @@ class MainFragmentViewModel:ViewModel() {
                     product?.let { productList.add(it) }
                 }
                 _productList.postValue(productList)
-
             }
             .addOnFailureListener { exception ->
                 Log.e(TAG, "Error getting products", exception)
             }
     }
+
     fun setTotalAmount(amount: Double) {
         _totalAmount.value = amount
     }
-
 
     fun addToTotalAmount(amount: Double) {
         val currentTotal = _totalAmount.value ?: 0.0
         _totalAmount.value = currentTotal + amount
     }
+
 
 
 }

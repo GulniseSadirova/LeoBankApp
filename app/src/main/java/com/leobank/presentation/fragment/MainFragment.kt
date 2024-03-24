@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -23,8 +24,8 @@ import kotlinx.coroutines.launch
 
 
 class MainFragment : Fragment() {
-  private lateinit var binding: FragmentMainBinding
-  private lateinit var adapter: Adapter
+    private lateinit var binding: FragmentMainBinding
+    private lateinit var adapter: Adapter
     private lateinit var viewModel: MainFragmentViewModel
     private lateinit var transferViewModel: TransferViewModel
     private var productList: ArrayList<Spending> = ArrayList()
@@ -35,7 +36,7 @@ class MainFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding=FragmentMainBinding.inflate(inflater,container,false)
+        binding = FragmentMainBinding.inflate(inflater, container, false)
         click()
         transferViewModel = ViewModelProvider(requireActivity()).get(TransferViewModel::class.java)
         transferViewModel.initSharedPreferences(requireContext())
@@ -48,9 +49,10 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel=ViewModelProvider(this).get(MainFragmentViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(MainFragmentViewModel::class.java)
         setAdapter()
         observeProducts()
+
         lifecycleScope.launch(Dispatchers.Main) {
             viewModel.getAllProducts()
         }
@@ -70,18 +72,34 @@ class MainFragment : Fragment() {
             override fun onItemClick(item: Spending) {
                 val bundle = Bundle()
                 bundle.putInt("id", item.itemId)
-                Log.e(TAG, "onItemClick: ${item.itemId}", )
+                Log.e(TAG, "onItemClick: ${item.itemId}",)
                 findNavController().navigate(R.id.action_mainFragment_to_singleItemFragment, bundle)
             }
         })
+        binding.recylerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recylerView.adapter = adapter
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.submitList(productList, newText.orEmpty())
+                return true
+            }
+        })
+
+
+
 
     }
 
-    private fun click(){
+    private fun click() {
         binding.myLeoCard.setOnClickListener {
             binding.myLeoCard.animate().apply {
                 rotationX(90f)
-                duration=500
+                duration = 500
                 withEndAction {
                     findNavController().navigate(R.id.action_mainFragment_to_detailedCardFragment)
                 }
@@ -90,17 +108,19 @@ class MainFragment : Fragment() {
     }
 
 
-    private fun balanceIncrease(){
+    private fun balanceIncrease() {
         binding.imageAdd.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_balanceIncreaseFragment)
         }
     }
-    private fun sendCard(){
+
+    private fun sendCard() {
         binding.imageForward.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_sendToCardFragment)
         }
     }
-    private fun payment(){
+
+    private fun payment() {
         binding.imageWallet.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_paymentFragment)
         }
@@ -131,7 +151,14 @@ class MainFragment : Fragment() {
 
 
 
-
-
-
 }
+
+
+
+
+
+
+
+
+
+

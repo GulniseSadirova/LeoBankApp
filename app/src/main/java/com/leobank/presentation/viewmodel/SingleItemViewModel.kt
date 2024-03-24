@@ -30,7 +30,7 @@ class SingleItemViewModel : ViewModel() {
                         title = document.getString("title") ?: "",
                         explanation = document.getString("explanation") ?: "",
                         imageUrl = document.getString("imageUrl") ?: "",
-                        price = document.getLong("price")?.toInt() ?: 0
+                        price = document.getLong("price")?.toDouble() ?: 0.0
                     )
                     productList.add(product)
                 }
