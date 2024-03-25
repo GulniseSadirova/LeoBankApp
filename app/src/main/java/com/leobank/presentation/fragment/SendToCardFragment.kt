@@ -21,11 +21,17 @@ class SendToCardFragment : Fragment() {
     ): View? {
         binding= FragmentSendToCardBinding.inflate(inflater,container,false)
         back()
+        newCard()
         return binding.root
     }
     private fun back(){
         binding.imgBack.setOnClickListener {
             findNavController().navigate(R.id.action_sendToCardFragment_to_mainFragment)
+        }
+    }
+    private fun newCard(){
+        binding.imageView4.setOnClickListener {
+            findNavController().navigate(R.id.action_sendToCardFragment_to_newCardAddFragment)
         }
     }
 

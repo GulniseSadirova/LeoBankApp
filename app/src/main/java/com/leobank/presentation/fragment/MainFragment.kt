@@ -79,7 +79,7 @@ class MainFragment : Fragment() {
         binding.recylerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recylerView.adapter = adapter
 
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        binding.searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }

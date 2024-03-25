@@ -30,9 +30,9 @@ class SingleEdvViewModel: ViewModel() {
                     val product = Edv(
                         itemId = document.getLong("itemId")?.toInt() ?: 0,
                         ficsalİd = document.getString("ficsalİd") ?: "",
-                        edv = document.getLong("edv")?.toFloat() ?: 0.0f,
-                        mebleg = document.getLong("mebleg")?.toFloat() ?: 0.0f,
-                        date=document.getString("date") ?: ""
+                        edv = document.getLong("edv")?.toDouble() ?: 0.0,
+                        mebleg = document.getLong("mebleg")?.toDouble() ?: 0.0,
+                        date =document.getString("date") ?: ""
                     )
                     productList.add(product)
                 }

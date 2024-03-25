@@ -105,6 +105,9 @@
         <action
             android:id="@+id/action_sendToCardFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_sendToCardFragment_to_newCardAddFragment"
+            app:destination="@id/newCardAddFragment" />
     </fragment>
     <fragment
         android:id="@+id/paymentFragment"
@@ -204,6 +207,30 @@
         <action
             android:id="@+id/action_scanFragment_to_edvFragment"
             app:destination="@id/edvFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newCardAddFragment"
+        android:name="com.leobank.NewCardAddFragment"
+        android:label="fragment_new_card_add"
+        tools:layout="@layout/fragment_new_card_add" >
+        <action
+            android:id="@+id/action_newCardAddFragment_to_sendToCardFragment"
+            app:destination="@id/sendToCardFragment" />
+        <action
+            android:id="@+id/action_newCardAddFragment_to_decreaseCardFragment"
+            app:destination="@id/decreaseCardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/decreaseCardFragment"
+        android:name="com.leobank.DecreaseCardFragment"
+        android:label="fragment_decrease_card"
+        tools:layout="@layout/fragment_decrease_card" >
+        <action
+            android:id="@+id/action_decreaseCardFragment_to_newCardAddFragment"
+            app:destination="@id/newCardAddFragment" />
+        <action
+            android:id="@+id/action_decreaseCardFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
 
 </navigation>

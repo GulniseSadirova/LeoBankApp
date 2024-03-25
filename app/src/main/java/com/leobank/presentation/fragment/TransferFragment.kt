@@ -1,13 +1,20 @@
 package com.leobank.presentation.fragment
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.leobank.NotificationService
 import com.leobank.R
 import com.leobank.presentation.viewmodel.TransferViewModel
 import com.leobank.databinding.FragmentTransferBinding
@@ -22,9 +29,7 @@ class TransferFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentTransferBinding.inflate(inflater, container, false)
-        back()
         setupClickListeners()
-
 
         transferViewModel = ViewModelProvider(requireActivity()).get(TransferViewModel::class.java)
         transferViewModel.initSharedPreferences(requireContext())
@@ -32,13 +37,11 @@ class TransferFragment : Fragment() {
         return binding.root
     }
 
-    private fun back() {
+    private fun setupClickListeners() {
         binding.imgBack.setOnClickListener {
             findNavController().navigate(R.id.action_transferFragment_to_anotherCardIncreaseFragment)
         }
-    }
 
-    private fun setupClickListeners() {
         binding.buttonSend.setOnClickListener {
             val enteredAmount = binding.editTextManat.text.toString().toDoubleOrNull()
             if (enteredAmount == null) {
@@ -48,13 +51,27 @@ class TransferFragment : Fragment() {
 
             transferViewModel.updateTotalAmount(enteredAmount)
             val newTotalAmount = transferViewModel.transferAmount.value ?: 0.0
-            Toast.makeText(requireContext(), "$enteredAmount Balansınız uğurla artırıldı", Toast.LENGTH_SHORT).show()
 
+            // Bildirim izni kontrolü
+            if (ContextCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(
+                    requireActivity(),
+                    arrayOf(Manifest.permission.POST_NOTIFICATIONS),
+                    PERMISSION_REQUEST_CODE
+                )
+            } else {
+                NotificationService(requireContext()).showBasicNotification()
+            }
 
             findNavController().navigate(R.id.action_transferFragment_to_mainFragment)
         }
     }
+
+    companion object {
+        private const val PERMISSION_REQUEST_CODE = 101
+    }
 }
-
-
-
