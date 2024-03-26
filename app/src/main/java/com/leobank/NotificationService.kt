@@ -30,7 +30,6 @@ class NotificationService(private val context: Context) {
                 Manifest.permission.POST_NOTIFICATIONS
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            // İzin yoksa işlem yapma
             return
         }
         notificationManager.notify(Random.nextInt(), notification)
