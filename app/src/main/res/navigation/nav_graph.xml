@@ -75,7 +75,11 @@
         android:id="@+id/othersFragment"
         android:name="com.leobank.presentation.fragment.OthersFragment"
         android:label="fragment_others"
-        tools:layout="@layout/fragment_others" />
+        tools:layout="@layout/fragment_others" >
+        <action
+            android:id="@+id/action_othersFragment_to_profilesFragment"
+            app:destination="@id/profilesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailedCardFragment"
         android:name="com.leobank.presentation.fragment.DetailedCardFragment"
@@ -153,7 +157,7 @@
     </fragment>
     <fragment
         android:id="@+id/smsAddFragment"
-        android:name="com.leobank.presentation.fragment.smsAddFragment"
+        android:name="com.leobank.presentation.fragment.SmsAddFragment"
         android:label="fragment_sms_add"
         tools:layout="@layout/fragment_sms_add" >
         <action
@@ -210,7 +214,7 @@
     </fragment>
     <fragment
         android:id="@+id/newCardAddFragment"
-        android:name="com.leobank.NewCardAddFragment"
+        android:name="com.leobank.presentation.fragment.NewCardAddFragment"
         android:label="fragment_new_card_add"
         tools:layout="@layout/fragment_new_card_add" >
         <action
@@ -222,7 +226,7 @@
     </fragment>
     <fragment
         android:id="@+id/decreaseCardFragment"
-        android:name="com.leobank.DecreaseCardFragment"
+        android:name="com.leobank.presentation.fragment.DecreaseCardFragment"
         android:label="fragment_decrease_card"
         tools:layout="@layout/fragment_decrease_card" >
         <action
@@ -231,6 +235,18 @@
         <action
             android:id="@+id/action_decreaseCardFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profilesFragment"
+        android:name="com.leobank.presentation.fragment.ProfilesFragment"
+        android:label="fragment_profiles"
+        tools:layout="@layout/fragment_profiles" >
+        <action
+            android:id="@+id/action_profilesFragment_to_othersFragment"
+            app:destination="@id/othersFragment" />
+        <action
+            android:id="@+id/action_profilesFragment_to_numberAddFragment"
+            app:destination="@id/numberAddFragment" />
     </fragment>
 
 </navigation>

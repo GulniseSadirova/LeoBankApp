@@ -22,13 +22,16 @@ import com.google.firebase.auth.PhoneAuthProvider
 import com.leobank.MainActivity
 import com.leobank.R
 import com.leobank.databinding.FragmentNumberAddBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class NumberAddFragment : Fragment() {
 
     private lateinit var binding: FragmentNumberAddBinding
-    private lateinit var firebaseAuth: FirebaseAuth
+    @Inject
+    lateinit var firebaseAuth: FirebaseAuth
     private var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks? = null
     private var verificationId: String = ""
     private lateinit var number:String
@@ -66,7 +69,7 @@ class NumberAddFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        firebaseAuth = FirebaseAuth.getInstance()
+//        firebaseAuth = FirebaseAuth.getInstance()
 
         if (isUserLoggedIn()) {
             sendToMain()
@@ -74,7 +77,7 @@ class NumberAddFragment : Fragment() {
     }
 
     private fun init() {
-        firebaseAuth = FirebaseAuth.getInstance()
+//        firebaseAuth = FirebaseAuth.getInstance()
         callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
@@ -87,7 +90,6 @@ class NumberAddFragment : Fragment() {
                 } else if (e is FirebaseTooManyRequestsException) {
                     Log.d("TAG", "onVerificationFailed: ${e.toString()}")
                 }
-
             }
 
             override fun onCodeSent(

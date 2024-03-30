@@ -8,7 +8,9 @@ import android.view.WindowManager
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.leobank.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
 
@@ -36,6 +38,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.detailedCardFragment -> showBottomNavigation(false)
                 R.id.balanceIncreaseFragment -> showBottomNavigation(false)
                 R.id.transferFragment -> showBottomNavigation(false)
+                R.id.sendToCardFragment -> showBottomNavigation(false)
+                R.id.paymentFragment -> showBottomNavigation(false)
                 R.id.anotherCardIncreaseFragment -> showBottomNavigation(false)
                 else -> showBottomNavigation(true)
             }

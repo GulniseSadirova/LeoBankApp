@@ -7,17 +7,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.leobank.R
 import com.leobank.presentation.viewmodel.SingleItemViewModel
 import com.leobank.databinding.FragmentSingleItemBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SingleItemFragment : Fragment() {
     private lateinit var binding: FragmentSingleItemBinding
-    private lateinit var viewModel: SingleItemViewModel
+    val viewModel: SingleItemViewModel by viewModels()
     private var itemId: Int = 0
 
     override fun onCreateView(
@@ -30,7 +32,6 @@ class SingleItemFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SingleItemViewModel::class.java)
         itemId = arguments?.getInt("id") ?: 0
         viewModel.fetchProducts(itemId)
         Log.e(TAG, "onViewCreated: ${arguments?.getInt("id")}" )

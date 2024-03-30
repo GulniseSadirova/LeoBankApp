@@ -21,13 +21,17 @@ import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.leobank.R
 import com.leobank.databinding.FragmentSmsAddBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
-
-class smsAddFragment : Fragment() {
+@AndroidEntryPoint
+class SmsAddFragment : Fragment() {
     private lateinit var binding: FragmentSmsAddBinding
     private lateinit var OTP: String
-    private lateinit var firebaseAuth: FirebaseAuth
+
+    @Inject
+    lateinit var firebaseAuth: FirebaseAuth
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     private lateinit var phoneNumber: String
 
@@ -37,7 +41,7 @@ class smsAddFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSmsAddBinding.inflate(inflater, container, false)
-        login()
+
         return binding.root
     }
 
@@ -51,6 +55,7 @@ class smsAddFragment : Fragment() {
         init()
         addTextChangeListener()
         resendOTPTvVisibility()
+        login()
 
         binding.bttnIrali.setOnClickListener {
             val typedOTP = binding.editTextCode.text.toString()
@@ -146,7 +151,11 @@ class smsAddFragment : Fragment() {
         findNavController().navigate(R.id.action_smsAddFragment_to_emailAddFragment)
     }
     private fun login(){
-        findNavController().navigate(R.id.action_smsAddFragment_to_pinCodeFragment2)
+        binding.buttonLogin.setOnClickListener {
+            findNavController().navigate(R.id.action_smsAddFragment_to_pinCodeFragment2)
+
+        }
+
 
     }
 
@@ -156,7 +165,7 @@ class smsAddFragment : Fragment() {
     }
 
     private fun init() {
-        firebaseAuth = FirebaseAuth.getInstance()
+//        firebaseAuth = FirebaseAuth.getInstance()
     }
 
     inner class EditTextWatcher(private val view: View) : TextWatcher {

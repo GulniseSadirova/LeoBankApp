@@ -41,7 +41,7 @@
         android:id="@+id/imageStatistic"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="12dp"
         android:src="@drawable/statistikaa"
         app:layout_constraintEnd_toEndOf="parent"
 
@@ -136,7 +136,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtDevet" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -231,7 +231,7 @@
         android:layout_margin="10dp"
         android:src="@drawable/baseline_account_circle_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView9"
+        app:layout_constraintEnd_toStartOf="@+id/profile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />

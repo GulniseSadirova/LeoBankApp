@@ -5,32 +5,36 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.leobank.ConstValue
 import com.leobank.domain.Spending
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class SingleItemViewModel : ViewModel() {
+@HiltViewModel
+class SingleItemViewModel @Inject constructor(val firestore: FirebaseFirestore) : ViewModel() {
     private val _items = MutableLiveData<List<Spending>>()
     val items: LiveData<List<Spending>> = _items
 
-    private val firestore = Firebase.firestore
 
     fun fetchProducts(itemId: Int) {
         Log.d("SingleItemViewModel", "fetchProducts - itemId: $itemId")
 
         firestore.collection("spendings")
-            .whereEqualTo("itemId", itemId)
+            .whereEqualTo(ConstValue.ID_FIELD, itemId)
             .get()
             .addOnSuccessListener { querySnapshot ->
                 val productList = mutableListOf<Spending>()
                 for (document in querySnapshot.documents) {
 
                     val product = Spending(
-                        itemId = document.getLong("itemId")?.toInt() ?: 0,
-                        title = document.getString("title") ?: "",
-                        explanation = document.getString("explanation") ?: "",
-                        imageUrl = document.getString("imageUrl") ?: "",
-                        price = document.getLong("price")?.toDouble() ?: 0.0
+                        itemId = document.getLong(ConstValue.ID_FIELD)?.toInt() ?: 0,
+                        title = document.getString(ConstValue.TITLE_FIELD) ?: "",
+                        explanation = document.getString(ConstValue.EXPLANATION_FIELD) ?: "",
+                        imageUrl = document.getString(ConstValue.IMAGEUrl_FIELD) ?: "",
+                        price = document.getLong(ConstValue.PRICE_FIELD)?.toDouble() ?: 0.0
                     )
                     productList.add(product)
                 }

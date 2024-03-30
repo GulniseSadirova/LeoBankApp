@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -19,14 +20,16 @@ import com.leobank.R
 import com.leobank.domain.Spending
 import com.leobank.presentation.viewmodel.TransferViewModel
 import com.leobank.databinding.FragmentMainBinding
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
     private lateinit var adapter: Adapter
-    private lateinit var viewModel: MainFragmentViewModel
+    val viewModel: MainFragmentViewModel by viewModels()
     private lateinit var transferViewModel: TransferViewModel
     private var productList: ArrayList<Spending> = ArrayList()
 
@@ -49,7 +52,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainFragmentViewModel::class.java)
+
         setAdapter()
         observeProducts()
 

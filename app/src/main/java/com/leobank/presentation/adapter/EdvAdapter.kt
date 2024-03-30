@@ -53,8 +53,8 @@ class EdvAdapter(private var listener: OnItemClickListener) : RecyclerView.Adapt
         }
 
         fun bind(item: Edv) {
-            binding.txtEdv.text = item.edv.toString()
-            binding.txtMebleg.text = item.mebleg.toString()
+            binding.txtEdv.text = "${item.edv}".toDouble().toString()
+            binding.txtMebleg.text ="${item.mebleg}"
             binding.ficsalD.text = item.ficsalİd
         }
     }

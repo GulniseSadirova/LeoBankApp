@@ -91,6 +91,7 @@ dependencies {
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
     implementation ("com.github.yuriy-budiyev:code-scanner:2.3.0")
+    implementation("com.google.firebase:firebase-storage")
 
 
 }

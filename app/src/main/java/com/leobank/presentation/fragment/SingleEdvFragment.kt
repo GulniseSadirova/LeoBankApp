@@ -7,16 +7,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.leobank.R
 import com.leobank.presentation.viewmodel.SingleEdvViewModel
 import com.leobank.databinding.FragmentSingleEdvBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SingleEdvFragment : Fragment() {
     private lateinit var binding: FragmentSingleEdvBinding
-    private lateinit var viewModel: SingleEdvViewModel
+    val viewModel: SingleEdvViewModel by viewModels()
     private var itemId: Int = 0
 
 
@@ -30,7 +32,6 @@ class SingleEdvFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SingleEdvViewModel::class.java)
         itemId = arguments?.getInt("id") ?: 0
         viewModel.fetchProducts(itemId)
         Log.e(TAG, "onViewCreated: ${arguments?.getInt("id")}")
@@ -38,7 +39,7 @@ class SingleEdvFragment : Fragment() {
         viewModel.items.observe(viewLifecycleOwner) { productList ->
             val item = productList.find { it.itemId == itemId }
             item?.let {
-                binding.textEdv.text = item.edv.toInt().toString()
+                binding.textEdv.text = item.edv.toString()
                 binding.textFicsalD.text = item.ficsalİd
                 binding.textDate.text = item.date
 

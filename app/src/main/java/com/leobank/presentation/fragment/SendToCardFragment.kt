@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -16,14 +17,15 @@ import com.leobank.presentation.adapter.EdvAdapter
 import com.leobank.presentation.adapter.SendCardAdapter
 import com.leobank.presentation.viewmodel.EdvFragmentViewModel
 import com.leobank.presentation.viewmodel.SendToCardViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class SendToCardFragment : Fragment() {
     private lateinit var binding: FragmentSendToCardBinding
     private lateinit var adapter: SendCardAdapter
-    private lateinit var viewModel: SendToCardViewModel
+    val viewModel: SendToCardViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +37,6 @@ class SendToCardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SendToCardViewModel::class.java)
         setAdapter()
         observeUsers()
         fetchUsers()

@@ -1,4 +1,4 @@
-package com.leobank
+package com.leobank.presentation.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.leobank.R
 import com.leobank.databinding.FragmentDecreaseCardBinding
 import com.leobank.presentation.viewmodel.DecreaseCardViewModel
 

@@ -6,14 +6,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.leobank.domain.Spending
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MainFragmentViewModel() : ViewModel() {
-    private val firestore = Firebase.firestore
+@HiltViewModel
+class MainFragmentViewModel @Inject constructor(val firestore: FirebaseFirestore) : ViewModel() {
 
     private val _productList = MutableLiveData<List<Spending>>()
     val productList: LiveData<List<Spending>> get() = _productList

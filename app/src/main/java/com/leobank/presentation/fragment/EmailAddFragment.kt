@@ -11,10 +11,13 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.leobank.R
 import com.leobank.databinding.FragmentEmailAddBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class EmailAddFragment : Fragment() {
     private lateinit var binding: FragmentEmailAddBinding
+    @Inject
     lateinit var firebaseAuth: FirebaseAuth
 
 
@@ -25,7 +28,7 @@ class EmailAddFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding=FragmentEmailAddBinding.inflate(inflater,container,false)
-        firebaseAuth = Firebase.auth
+
 
         bttnClick()
         return binding.root

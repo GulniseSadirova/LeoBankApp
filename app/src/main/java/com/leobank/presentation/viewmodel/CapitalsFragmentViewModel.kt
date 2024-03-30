@@ -7,32 +7,29 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import com.leobank.domain.Edv
+import com.leobank.domain.Capitals
 import com.leobank.domain.User
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-
 @HiltViewModel
-class SendToCardViewModel @Inject constructor(val firestore: FirebaseFirestore): ViewModel() {
+class CapitalsFragmentViewModel @Inject constructor(val firestore: FirebaseFirestore): ViewModel() {
 
-    private val _userList = MutableLiveData<List<User>>()
-    val userList: LiveData<List<User>> get() = _userList
+    private val _capitalList = MutableLiveData<List<Capitals>>()
+    val capitalList: LiveData<List<Capitals>> get() = _capitalList
 
-    fun getAllUsers(context: Context) {
+    fun getAllCapitals(context: Context) {
         fetchUsers()
     }
 
     private fun fetchUsers() {
-        firestore.collection("users").get()
+        firestore.collection("capitals").get()
             .addOnSuccessListener { querySnapshot ->
-                val userList = mutableListOf<User>()
+                val capitalList = mutableListOf<Capitals>()
                 for (document in querySnapshot.documents) {
-                    val user = document.toObject(User::class.java)
-                    user?.let { userList.add(it) }
+                    val user = document.toObject(Capitals::class.java)
+                    user?.let { capitalList.add(it) }
                 }
-                _userList.postValue(userList)
+                _capitalList.postValue(capitalList)
             }
             .addOnFailureListener { exception ->
                 Log.e(ContentValues.TAG, "Error getting users", exception)
