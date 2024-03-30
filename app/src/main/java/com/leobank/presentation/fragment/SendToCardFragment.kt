@@ -44,7 +44,7 @@ class SendToCardFragment : Fragment() {
     }
 
     private fun setAdapter() {
-        // SendToCardViewModel'den gelen userList'i adapter'a aktararak adapter oluşturuyoruz.
+
         viewModel.userList.observe(viewLifecycleOwner) { userList ->
             adapter = SendCardAdapter(userList)
             binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())

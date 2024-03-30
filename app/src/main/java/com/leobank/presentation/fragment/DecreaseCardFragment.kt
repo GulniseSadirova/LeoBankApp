@@ -36,7 +36,6 @@ class DecreaseCardFragment : Fragment() {
         binding.buttonSend.setOnClickListener {
             val enteredAmount = binding.editTextManat.text.toString().toDoubleOrNull()
             if (enteredAmount == null) {
-                // Handle invalid input
                 return@setOnClickListener
             }
 

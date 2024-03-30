@@ -33,7 +33,6 @@ class CapitalsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding=FragmentCapitalsBinding.inflate(inflater,container,false)
         return binding.root
     }
@@ -46,7 +45,6 @@ class CapitalsFragment : Fragment() {
     }
 
     private fun setAdapter() {
-        // SendToCardViewModel'den gelen userList'i adapter'a aktararak adapter oluşturuyoruz.
         viewModel.capitalList.observe(viewLifecycleOwner) { capitalList ->
             adapter = CapitalsAdapter(capitalList)
             binding.recylerView.layoutManager = GridLayoutManager(requireContext(), 2)

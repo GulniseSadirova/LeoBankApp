@@ -52,7 +52,6 @@ class TransferFragment : Fragment() {
             transferViewModel.updateTotalAmount(enteredAmount)
             val newTotalAmount = transferViewModel.transferAmount.value ?: 0.0
 
-            // Bildirim izni kontrolü
             if (ContextCompat.checkSelfPermission(
                     requireContext(),
                     Manifest.permission.POST_NOTIFICATIONS
