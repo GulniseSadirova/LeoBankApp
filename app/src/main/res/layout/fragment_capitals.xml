@@ -182,7 +182,7 @@
         android:id="@+id/textSehm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$1.36"
+        android:text="&#8380;1.36"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="27dp"

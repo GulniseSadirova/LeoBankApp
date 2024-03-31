@@ -154,6 +154,9 @@
         <action
             android:id="@+id/action_numberAddFragment_to_smsAddFragment"
             app:destination="@id/smsAddFragment" />
+        <action
+            android:id="@+id/action_numberAddFragment_to_pinCodeFragment"
+            app:destination="@id/pinCodeFragment" />
     </fragment>
     <fragment
         android:id="@+id/smsAddFragment"
@@ -184,6 +187,9 @@
         <action
             android:id="@+id/action_pinCodeFragment_to_mainFragment2"
             app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_pinCodeFragment_to_numberAddFragment"
+            app:destination="@id/numberAddFragment" />
     </fragment>
     <fragment
         android:id="@+id/singleItemFragment"

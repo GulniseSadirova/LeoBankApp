@@ -49,7 +49,6 @@
         android:id="@+id/editTextCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:padding="16dp"
         android:inputType="number"
         android:gravity="center"
@@ -63,26 +62,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/bttnIrali"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:backgroundTint="@color/black"
-        android:text="İrəli"
-        android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.551"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCode"
-        app:layout_constraintVertical_bias="0.743" />
+<!--    <Button-->
+<!--        android:id="@+id/bttnIrali"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginLeft="15dp"-->
+<!--        android:layout_marginRight="15dp"-->
+<!--        android:backgroundTint="@color/black"-->
+<!--        android:text="İrəli"-->
+<!--        android:textSize="25dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/view"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.448"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/editTextCode"-->
+<!--        app:layout_constraintVertical_bias="0.938" />-->
 
     <TextView
         android:id="@+id/txtSmsGelmir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="256dp"
         android:gravity="center"
         android:text="SMS gəlmir?"
         android:textColor="#918D8D"
@@ -90,7 +90,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/bttnIrali"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.231"
+        app:layout_constraintHorizontal_bias="0.29"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextCode"
         app:layout_constraintVertical_bias="0.928" />
@@ -99,6 +99,7 @@
         android:id="@+id/txtZengSifaris"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="256dp"
         android:layout_marginRight="20dp"
         android:text="Zəng sifarişi vermək"
         android:textColor="@color/black"
@@ -106,8 +107,8 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/bttnIrali"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.08"
 
+        app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintStart_toEndOf="@+id/txtSmsGelmir"
         app:layout_constraintTop_toBottomOf="@+id/editTextCode"
         app:layout_constraintVertical_bias="0.928" />

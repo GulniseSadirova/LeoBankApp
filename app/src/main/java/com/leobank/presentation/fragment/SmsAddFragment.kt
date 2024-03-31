@@ -20,6 +20,7 @@ import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.leobank.R
+import com.leobank.SmsNotificationService
 import com.leobank.databinding.FragmentSmsAddBinding
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.concurrent.TimeUnit
@@ -57,30 +58,34 @@ class SmsAddFragment : Fragment() {
         resendOTPTvVisibility()
         login()
 
-        binding.bttnIrali.setOnClickListener {
-            val typedOTP = binding.editTextCode.text.toString()
+            SmsNotificationService(requireContext()).showBasicNotification()
 
-            if (typedOTP.isNotEmpty()) {
-                if (typedOTP.length == 6) {
-                    val credential: PhoneAuthCredential = PhoneAuthProvider.getCredential(
-                        OTP, typedOTP
-                    )
-                    signInWithPhoneAuthCredential(credential)
-                } else {
-                    Toast.makeText(
-                        requireContext(),
-                        "Please Enter Correct OTP",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            } else {
-                Toast.makeText(
-                    requireContext(),
-                    "Please Enter OTP",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
+
+
+//        binding.bttnIrali.setOnClickListener {
+//            val typedOTP = binding.editTextCode.text.toString()
+//
+//            if (typedOTP.isNotEmpty()) {
+//                if (typedOTP.length == 6) {
+//                    val credential: PhoneAuthCredential = PhoneAuthProvider.getCredential(
+//                        OTP, typedOTP
+//                    )
+//                    signInWithPhoneAuthCredential(credential)
+//                } else {
+//                    Toast.makeText(
+//                        requireContext(),
+//                        "Please Enter Correct OTP",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//            } else {
+//                Toast.makeText(
+//                    requireContext(),
+//                    "Please Enter OTP",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//            }
+//        }
     }
 
     private fun resendOTPTvVisibility() {
@@ -165,6 +170,7 @@ class SmsAddFragment : Fragment() {
     }
 
     private fun init() {
+//        firebaseAuth = FirebaseAuth.getInstance()
     }
 
     inner class EditTextWatcher(private val view: View) : TextWatcher {

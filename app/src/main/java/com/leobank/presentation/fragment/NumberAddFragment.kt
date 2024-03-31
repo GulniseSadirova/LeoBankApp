@@ -69,7 +69,7 @@ class NumberAddFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+//        firebaseAuth = FirebaseAuth.getInstance()
 
         if (isUserLoggedIn()) {
             sendToMain()
@@ -77,6 +77,7 @@ class NumberAddFragment : Fragment() {
     }
 
     private fun init() {
+//        firebaseAuth = FirebaseAuth.getInstance()
         callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {
