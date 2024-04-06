@@ -56,11 +56,7 @@ class ProfilesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Firestore'dan verileri alma ve gösterme işlemi
         getProfilesFromFirestore()
-
-        // Çıkış yap butonu
         setLogOut()
     }
 
@@ -70,14 +66,9 @@ class ProfilesFragment : Fragment() {
             .addOnSuccessListener { result ->
                 for (document in result) {
                     val profile = document.toObject(Profiles::class.java)
-                    // Her bir profil için yapılacak işlemleri burada yapabilirsiniz
-                    // Örneğin, TextView'lere atama yapabilirsiniz
                     binding.textName.text = profile.name
                     binding.textEpoct.text = profile.epoct
                     binding.textNumber.text = profile.phone
-
-                    // Profil resmini yüklemek için Glide ya da Picasso gibi kütüphaneleri kullanabilirsiniz
-                    // Örnek Glide kullanımı:
                      Glide.with(requireContext()).load(profile.imageUrl).into(binding.imageUrl)
                 }
             }
@@ -102,14 +93,12 @@ class ProfilesFragment : Fragment() {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
             val imageUri: Uri = data.data!!
             imageUrl.setImageURI(imageUri)
-            // Firebase Storage'a yükleme işlemini buraya ekleyebilirsiniz
            uploadImageToFirebaseStorage(imageUri)
 
         }
     }
 
 
-    // Firebase Storage'a resim yükleme fonksiyonu
      private fun uploadImageToFirebaseStorage(imageUri: Uri) {
          val storageRef = FirebaseStorage.getInstance().reference
         val imagesRef = storageRef.child("images/bmw.jpg")
@@ -117,9 +106,8 @@ class ProfilesFragment : Fragment() {
          val uploadTask = imagesRef.putFile(imageUri)
 
          uploadTask.addOnFailureListener {
-    //         // Handle unsuccessful uploads
          }.addOnSuccessListener { taskSnapshot ->
-             // Handle successful uploads
+
        }
      }
 

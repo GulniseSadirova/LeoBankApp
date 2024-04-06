@@ -82,36 +82,30 @@
         android:id="@+id/txtSmsGelmir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="256dp"
         android:gravity="center"
         android:text="SMS gəlmir?"
         android:textColor="#918D8D"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/bttnIrali"
+        app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.29"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCode"
-        app:layout_constraintVertical_bias="0.928" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/txtZengSifaris"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="256dp"
         android:layout_marginRight="20dp"
         android:text="Zəng sifarişi vermək"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/bttnIrali"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
 
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.086"
-        app:layout_constraintStart_toEndOf="@+id/txtSmsGelmir"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCode"
-        app:layout_constraintVertical_bias="0.928" />
+        app:layout_constraintStart_toEndOf="@+id/txtSmsGelmir" />
 
     <ImageView
         android:id="@+id/imgBack"

@@ -11,7 +11,6 @@ class DecreaseCardViewModel:ViewModel() {
         get() = _currentAmount
 
     init {
-        // Default değer, eğer gerekliyse burada ayarlanabilir.
         _currentAmount.value = 0.0
     }
 

@@ -33,7 +33,6 @@ class NumberAddFragment : Fragment() {
     @Inject
     lateinit var firebaseAuth: FirebaseAuth
     private var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks? = null
-    private var verificationId: String = ""
     private lateinit var number:String
     private lateinit var sharedPreferences: SharedPreferences
 
@@ -69,7 +68,7 @@ class NumberAddFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        firebaseAuth = FirebaseAuth.getInstance()
+
 
         if (isUserLoggedIn()) {
             sendToMain()
@@ -77,7 +76,7 @@ class NumberAddFragment : Fragment() {
     }
 
     private fun init() {
-//        firebaseAuth = FirebaseAuth.getInstance()
+
         callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
             override fun onVerificationCompleted(credential: PhoneAuthCredential) {

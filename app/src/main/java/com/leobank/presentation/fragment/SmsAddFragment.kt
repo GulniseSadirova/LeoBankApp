@@ -170,7 +170,6 @@ class SmsAddFragment : Fragment() {
     }
 
     private fun init() {
-//        firebaseAuth = FirebaseAuth.getInstance()
     }
 
     inner class EditTextWatcher(private val view: View) : TextWatcher {
